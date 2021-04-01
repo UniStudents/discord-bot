@@ -1,16 +1,21 @@
 const {footerText,footerIcon,color,version} = require('../Configs/botconfig.json')
 const discord = require('discord.js')
 
-function sendMessageForm(bot, channel, message, emoji, title) {
-    let formEmoji = bot.emojis.resolve(emoji);
+function sendMessageForm(bot, channel, message, title, fields, fieldValues, author) {
+
     let response = new discord.MessageEmbed()
         .setColor(color)
         .setTitle(title)
-        .setFooter(footerText.replace("%version%",version))
-        .setDescription(`${formEmoji} ${message}`)
+        .setDescription(`${message}`)
+        .setFooter(footerText.replace("%version%",version), author.avatarURL())
         .setTimestamp();
 
-    channel.send(response);
+    fields.forEach((fieldName,index) => {
+        response.addField(fieldName, fieldValues[index]);
+    })
+    channel.send(response).catch();
+
+    return response;
 }
 
 module.exports = {

@@ -23,6 +23,7 @@ module.exports = {
     }
 }
 
+//toDO delete the function below. Make it using the sendMessage Function.
 async function sendToSuggestionCh(bot, channel, message, title, emoji, author) {
 
     let emojiToUse = bot.emojis.resolve(emoji);

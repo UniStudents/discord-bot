@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/UniStudents/unistudents-bot#readme",
   "dependencies": {
+    "date": "^1.0.2",
     "discord.js": "^12.5.1",
     "glob": "^7.1.6",
     "path": "^0.12.7"
