@@ -2,6 +2,7 @@ const discord = require ('discord.js')
 const {prefix,color,footerText,version,footerIcon} = require('../../Configs/botconfig.json')
 const error = require('../../Utils/error')
 const emojis = require('../../Configs/emojis.json')
+
 module.exports = {
     name: "announce",
     description:"Make an announcement.",
@@ -11,10 +12,10 @@ module.exports = {
     permission: 1,
     execute: async (bot,message,args) => {
         let channelToAnnounce = message.mentions.channels.first() || message.guild.channels.cache.get(args[0]) || Array.from(message.guild.channels.cache.values()).find(channel => channel.name === args[0])
-        if(!channelToAnnounce) return error.send(bot,message.channel,`Required argument missing!\n\n Usage !announce **<channel>** <announce text>`)
+        if(!channelToAnnounce) return error.send(bot,message.channel,`Required argument missing!\n\n Usage: !announce **<channel>** <announce text>`)
 
         let whatToAnnounce = args.slice(1).join(' ')
-        if(!whatToAnnounce) return error.send(bot,message.channel,`Required argument missing!\n\n Usage!announce <channel> **<announce text>**`)
+        if(!whatToAnnounce) return error.send(bot,message.channel,`Required argument missing!\n\n Usage: !announce <channel> **<announce text>**`)
 
         //Send embed
         let announce = bot.emojis.resolve(emojis["notification"])
