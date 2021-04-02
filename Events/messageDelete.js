@@ -1,4 +1,4 @@
-const welcome = require('../Configs/config.json')['welcomeChannelId'];
+const {welcomeChannelId} = require('../Managers/configManager')();
 const discord = require('discord.js')
 const emojis = require('../Configs/emojis.json');
 const {sendMessageForm} = require('../Managers/embedCreator');
@@ -9,6 +9,8 @@ module.exports = {
     name: "messageDelete",
     execute: async (bot) => {
         bot.on('messageDelete', async (message) => {
+            //Stop commands
+            if(message.content && message.content.startsWith(prefix) || message.author.bot) return
             let channel = message.channel;
             let deletedContent = message.content;
             let timeStamp = getTime();

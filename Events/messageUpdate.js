@@ -1,4 +1,4 @@
-const welcome = require('../Configs/config.json')['welcomeChannelId'];
+const {welcomeChannelId} = require('../Managers/configManager')();
 const discord = require('discord.js')
 const emojis = require('../Configs/emojis.json');
 const {sendMessageForm} = require('../Managers/embedCreator');

@@ -2,10 +2,9 @@ const discord = require ('discord.js')
 const error = require('../../Utils/error')
 const emojis = require('../../Configs/emojis.json')
 const {prefix,footerText,footerIcon,color,version} = require('../../Configs/botconfig.json')
-const {suggestionChannelId} = require('../../Configs/config.json');
+const {suggestionChannelId} =  require('../../Managers/configManager')()
 
 module.exports = {
-
     name: "suggestion",
     description:"Make a suggestion.",
     aliases:["sg","suggest"],
@@ -32,7 +31,7 @@ async function sendToSuggestionCh(bot, channel, message, title, emoji, author) {
     let response = new discord.MessageEmbed()
         .setColor(color)
         .setTitle(title)
-        .addField('Suggested By','@'+author.username)
+        .addField('Suggested By',author)
         .addField(`Suggestion ${emojiToUse}`,message)
         .setFooter(footerText.replace("%version%",version),author.avatarURL())
         .setTimestamp();

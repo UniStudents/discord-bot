@@ -11,7 +11,7 @@ client.events = new discord.Collection();
 
 //Handlers
 //todo handle it with error Handler
-commandHandler.run(client).catch(e => {});
+commandHandler.run(client).catch(e => {console.log(e)});
 eventHandler.run(client).catch(e => { console.log(e)});
 
 
