@@ -15,8 +15,8 @@ module.exports = {
                 response.addField(key, value);
             })
         }
-        channel.send(response).catch();
-        return await response;
+        return await channel.send(response).catch();
+
     },
     createBasicEmbed: (desc ,authorText="", authorIcon ="") => {
         let response = new discord.MessageEmbed()
