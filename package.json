@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "set NODE_ENV=development &&  nodemon index.js",
     "devServer": "set NODE_ENV=development && node index.js",
-    "prod": "set NODE_ENV=development &&  node index.js"
+    "prod": "set NODE_ENV=production &&  node index.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "date": "^1.0.2",
     "discord.js": "^12.5.1",
     "glob": "^7.1.6",
+    "luxon": "^1.26.0",
     "nodemon": "^2.0.7",
     "path": "^0.12.7",
     "quick.db": "^7.1.3"

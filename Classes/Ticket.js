@@ -81,7 +81,7 @@ module.exports = class Ticket {
            .setTimestamp()
            .setFooter(footerText.replace("%version%",version))
         await this.message.channel.send(embed)
-        let mentionMessage =  config.ticket_settings.ticketAccessRoles.map(roleId=> `<@&${roleId}>`).join(" ")
+        let mentionMessage =  config.ticket_settings.ticketAccessRoles.map(roleId=> `<@&${roleId}>`).join(" ") + ` ${this.message.author}`
         let supportMessage = new discord.MessageEmbed()
             .setColor(color)
             .setAuthor(`${this.message.author.tag}`,this.message.author.displayAvatarURL())

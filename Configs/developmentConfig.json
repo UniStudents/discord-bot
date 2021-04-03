@@ -1,7 +1,8 @@
 {
-  "welcomeChannelId": "826562614456614914",
+  "welcomeChannelId": "828025750116106330",
   "suggestionChannelId": "827084566275162122",
   "bugReportChannelId": "827084588639453214",
+  "logsChannelId": "827945258331013141",
   "ticket_settings": {
     "ticketCategoryId": "827663569494605885",
     "ticketAccessRoles": ["827644973103972414","827644994369224706","827645010459230288"],

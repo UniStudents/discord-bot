@@ -18,6 +18,15 @@ module.exports = {
         }
         channel.send(response).catch();
         return response;
+    },
+    createBasicEmbed: (desc ,authorText="", authorIcon ="") => {
+        let response = new discord.MessageEmbed()
+            .setColor(color)
+            .setDescription(`${desc}`)
+            .setFooter(footerText.replace("%version%",version), footerIcon ? footerIcon : null)
+            .setTimestamp();
+        if(authorText && authorIcon) response.setAuthor(authorText ? authorText : "",authorIcon ? authorIcon : null)
+        return response
     }
 
 }
