@@ -3,12 +3,11 @@ const discord = require('discord.js')
 
 
 module.exports = {
-    sendMessageForm: (bot, channel, message, fields, footerIcon,authorText = "",authorIcon = "") => {
+    sendMessageForm: async (bot, channel, fields, footerIcon, authorText = "") => {
         let response = new discord.MessageEmbed()
             .setColor(color)
-            .setAuthor(authorText ? authorText : "",authorIcon ? authorIcon : null)
-            .setDescription(`${message}`)
-            .setFooter(footerText.replace("%version%",version), footerIcon ? footerIcon : null)
+            .setAuthor(authorText ? authorText : "",footerIcon ? footerIcon : null)
+            .setFooter(footerText.replace("%version%",version))
             .setTimestamp();
 
         if(fields !=null) {
@@ -17,7 +16,7 @@ module.exports = {
             })
         }
         channel.send(response).catch();
-        return response;
+        return await response;
     },
     createBasicEmbed: (desc ,authorText="", authorIcon ="") => {
         let response = new discord.MessageEmbed()
