@@ -3,9 +3,10 @@ const discord = require('discord.js')
 
 
 module.exports = {
-    sendMessageForm: async (bot, channel, fields, footerIcon, authorText = "") => {
+    sendMessageForm: async (bot, channel,message = "", fields, footerIcon, authorText = "") => {
         let response = new discord.MessageEmbed()
             .setColor(color)
+            .setDescription(message)
             .setAuthor(authorText ? authorText : "",footerIcon ? footerIcon : null)
             .setFooter(footerText.replace("%version%",version))
             .setTimestamp();

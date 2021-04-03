@@ -1,15 +1,27 @@
-const {welcomeChannelId} = require('../Managers/configManager')();
+const {logsChannelId} = require('../Managers/configManager')();
 const discord = require('discord.js')
 const emojis = require('../Configs/emojis.json');
 const {sendMessageForm} = require('../Managers/embedCreator');
-const {getTime} = require('../Utils/getTime');
+const {getDatePreFormatted,getTimePreFormatted} = require('../Utils/getTime');
 
 
 module.exports = {
     name: "messageUpdate",
     execute: async (bot) => {
-        bot.on('messageUpdate', (message) => {
-            // toDO old content has been deleted, i'm gonna rewrote this.
+        bot.on('messageUpdate', (oldMessage, newMessage) => {
+            let channel = newMessage.guild.channels.cache.get(logsChannelId);
+
+            let fields = new Map();
+            let description = `Message Edited in ${newMessage.channel}`;
+            fields.set("Edited at ",getDatePreFormatted() + "\n time: " + getTimePreFormatted());
+            fields.set("Message before ", oldMessage.content)
+            fields.set("Message after ", newMessage.content)
+
+            if(!oldMessage || !newMessage || oldMessage.author.bot || !oldMessage.content || !newMessage.content || !channel) return
+
+            sendMessageForm(bot, channel ,description, fields, newMessage.author.displayAvatarURL(), `${newMessage.author.tag} Edit a message`)
+
+
         })
     }
 }

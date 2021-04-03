@@ -24,7 +24,7 @@ module.exports = {
             fields.set('Suggested by ', message.author);
             fields.set(`Suggestion ${suggestionEmoji}`, message.content.replace(message.content.split(" ")[0],""))
 
-            let embedMessage = await sendMessageForm(bot, suggestionChannel , fields, message.author.displayAvatarURL(), `${message.author.tag} Submitted a suggestion`)
+            let embedMessage = await sendMessageForm(bot, suggestionChannel , "" , fields, message.author.displayAvatarURL(), `${message.author.tag} Submitted a suggestion`)
 
             if (embedMessage != null) {
                 embedMessage.react(yesEmoji);
