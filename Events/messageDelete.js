@@ -21,6 +21,7 @@ module.exports = {
             }).catch(() => ({
                 entries: []
             }));
+            //toDO check valid timestamp.
             const auditEntry = fetchedLogs.entries.first()
             const executor = auditEntry && auditEntry.executor ? message.guild.members.cache.get(auditEntry.executor.id) : 'Unknown';
             //Fields
@@ -28,10 +29,10 @@ module.exports = {
             fields.set("Message",deletedContent)
             //Send the actual embed
             //todo change channel to logs
-            sendMessageForm(
+            await sendMessageForm(
                 bot,
                 channel,
-                `Message deleted in ${channel} by \`\`${executor.user.tag ? executor.user.tag : "Unknown"}\`\``,
+                `Message deleted in ${channel} by \`\`${typeof executor === "string" ? executor : executor.user.tag}\`\``,
                 fields, message.author.displayAvatarURL(),
                 `Message was by ${message.author.tag}`,
                 message.author.displayAvatarURL()

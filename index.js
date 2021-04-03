@@ -1,8 +1,11 @@
 const discord = require('discord.js')
 const client = new discord.Client()
-const {prefix,token} = require('./Configs/botconfig.json')
+const {prefix,devToken,token} = require('./Configs/botconfig.json')
 const commandHandler = require('./Managers/commandHandler')
 const eventHandler = require('./Managers/eventHandler')
+const env = process.env.NODE_ENV ? process.env.NODE_ENV.toString().trim() : "development"
+const runToken = env === "development" ? devToken : token
+
 
 
 //Collections
@@ -16,7 +19,7 @@ eventHandler.run(client).catch(e => { console.log(e)});
 
 
 
-client.login(token).then (() => {
+client.login(runToken).then (() => {
     console.log('Login accepted.')
 }).catch(err => {
     console.log(`Error ${err}`)
