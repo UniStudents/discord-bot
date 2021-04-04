@@ -29,13 +29,21 @@ module.exports = {
 
             if (found) {
                 let fields = new Map();
+                let yesEmoji = bot.emojis.resolve(emojis['yesEmoji']);
+                let noEmoji = bot.emojis.resolve(emojis['noEmoji']);
                 fields.set("Category", args[0]);
                 fields.set("Submitted at", getDatePreFormatted() + " " + getTimePreFormatted())
                 fields.set("Reporter ID", message.author.id);
                 fields.set("Info", message.content.replace(message.content.split(" ")[0], "").replace(args[0], ""));
 
                 await sendMessageForm(bot, message.channel, "Thanks for reporting a bug!", null, message.author.displayAvatarURL(), `${message.author.tag} Submitted a bug Report`);
-                await sendMessageForm(bot, logChannel, "", fields, message.author.displayAvatarURL(), `${message.author.tag} Submitted a bug Report`);
+                let embedMessage = await sendMessageForm(bot, logChannel, "", fields, message.author.displayAvatarURL(), `${message.author.tag} Submitted a bug Report`);
+
+                if (embedMessage !== null) {
+                    embedMessage.react(yesEmoji);
+                    embedMessage.react(noEmoji);
+                }
+
 
             } else {
                 return error.send(bot, message.channel, `Unknown category!\n\n**Available Categories: ** \n [discord] \n [app] \n [site]\n\n Usage !bugReport **<catergory>** **<bug report>**`)
