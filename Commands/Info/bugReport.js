@@ -3,28 +3,47 @@ const emojis = require('../../Configs/emojis.json')
 const {prefix,footerText,footerIcon,color,version} = require('../../Configs/botconfig.json')
 const {bugReportChannelId} = require('../../Managers/configManager')()
 const {sendMessageForm} = require('../../Managers/embedCreator');
+const {bugs} = require('../../Configs/bugconfig.json');
+const {getTimePreFormatted} = require("../../Utils/getTime");
+const {getDatePreFormatted} = require("../../Utils/getTime");
 
 
 module.exports = {
     name: "bugReport",
-    description:"Make a bug report.",
-    aliases:["bug","report"],
-    category:"📝 Info",
-    usage:`${prefix}bugReport`,
+    description: "Make a bug report.",
+    aliases: ["bug", "report"],
+    category: "📝 Info",
+    usage: `${prefix}bugReport`,
     permission: 1,
     execute: async (bot, message, args) => {
-        if (args.length !== 0) {
+        if (args.length !== 0 || args.length < 2) {
+            let logChannel = message.guild.channels.cache.get(bugReportChannelId);
+            let categories = bugs['categories'];
+            let found;
 
-            let bugReportChannel = message.guild.channels.cache.get(bugReportChannelId);
-            let bugReportEmoji = bot.emojis.resolve(emojis['bugReport']);
-            let fields = new Map();
-            fields.set('Bug reported by ', message.author);
-            fields.set(`Report ${bugReportEmoji}`, message.content.replace(message.content.split(" ")[0],""))
+            categories.forEach((item) => {
+                if (args[0] === item) {
+                    found = true;
+                }
+            })
 
-            await sendMessageForm(bot, bugReportChannel, "", fields, message.author.displayAvatarURL(), `${message.author.tag} Submitted a bug Report`)
-        }
-        else {
-            return error.send(bot, message.channel, `Required argument missing!\n\n Usage !suggestion **<suggestion text>**`)
+            if (found) {
+                let fields = new Map();
+                fields.set("Category", args[0]);
+                fields.set("Submitted at", getDatePreFormatted() + " " + getTimePreFormatted())
+                fields.set("Reporter ID", message.author.id);
+                fields.set("Info", message.content.replace(message.content.split(" ")[0], "").replace(args[0], ""));
+
+                await sendMessageForm(bot, message.channel, "Thanks for reporting a bug!", null, message.author.displayAvatarURL(), `${message.author.tag} Submitted a bug Report`);
+                await sendMessageForm(bot, logChannel, "", fields, message.author.displayAvatarURL(), `${message.author.tag} Submitted a bug Report`);
+
+            } else {
+                return error.send(bot, message.channel, `Unknown category!\n\n**Available Categories: ** \n [discord] \n [app] \n [site]\n\n Usage !bugReport **<catergory>** **<bug report>**`)
+            }
+
+
+        } else {
+            return error.send(bot, message.channel, `Required argument missing!\n\n Usage !bugReport **<catergory>** **<bug report>**`)
         }
     }
 }

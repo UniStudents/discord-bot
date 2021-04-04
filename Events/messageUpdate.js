@@ -8,7 +8,7 @@ const {getDatePreFormatted,getTimePreFormatted} = require('../Utils/getTime');
 module.exports = {
     name: "messageUpdate",
     execute: async (bot) => {
-        bot.on('messageUpdate', (oldMessage, newMessage) => {
+        bot.on('messageUpdate', async (oldMessage, newMessage) => {
             let channel = newMessage.guild.channels.cache.get(logsChannelId);
 
             let fields = new Map();
@@ -19,9 +19,7 @@ module.exports = {
 
             if(!oldMessage || !newMessage || oldMessage.author.bot || !oldMessage.content || !newMessage.content || !channel) return
 
-            sendMessageForm(bot, channel ,description, fields, newMessage.author.displayAvatarURL(), `${newMessage.author.tag} Edit a message`)
-
-
+            await sendMessageForm(bot, channel ,description, fields, newMessage.author.displayAvatarURL(), `${newMessage.author.tag} Edit a message`)
         })
     }
 }

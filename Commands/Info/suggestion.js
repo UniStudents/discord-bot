@@ -15,8 +15,7 @@ module.exports = {
     permission: 1,
     execute: async (bot, message, args) => {
         if (args.length !== 0) {
-
-            let suggestionChannel = message.guild.channels.cache.get(suggestionChannelId);
+            let suggestionChannel = await message.guild.channels.cache.get(suggestionChannelId);
             let fields = new Map();
             let yesEmoji = bot.emojis.resolve(emojis['yesEmoji']);
             let noEmoji = bot.emojis.resolve(emojis['noEmoji']);

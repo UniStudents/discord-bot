@@ -11,7 +11,7 @@ module.exports = {
             .setFooter(footerText.replace("%version%",version))
             .setTimestamp();
 
-        if(fields !=null) {
+        if (fields != null) {
             fields.forEach((value, key) => {
                 response.addField(key, value);
             })
@@ -26,7 +26,7 @@ module.exports = {
             .setFooter(footerText.replace("%version%",version), footerIcon ? footerIcon : null)
             .setTimestamp();
         if(authorText && authorIcon) response.setAuthor(authorText ? authorText : "",authorIcon ? authorIcon : null)
-        return response
+        return response;
     }
 
 }
