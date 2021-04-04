@@ -13,7 +13,7 @@ module.exports = {
 
             let fields = new Map();
             let description = `Message Edited in ${newMessage.channel}`;
-            fields.set("Edited at ",getDatePreFormatted() + "\n time: " + getTimePreFormatted());
+            fields.set("Edited at","**Date: **"+getDatePreFormatted() + "\n **Time: **" + getTimePreFormatted());
             fields.set("Message before ", oldMessage.content)
             fields.set("Message after ", newMessage.content)
 
