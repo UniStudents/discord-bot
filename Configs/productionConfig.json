@@ -3,6 +3,10 @@
   "suggestionChannelId": "824772853362458646",
   "bugReportChannelId": "824772894369906688",
   "logsChannelId": "824771713396768809",
+  "counters": {
+    "memberCounterChannelId": "828683740908748801",
+    "betaTestersCounterChannelId": "828683960757780511"
+  },
   "ticket_settings": {
     "ticketCategoryId": "827606788932239420",
     "ticketAccessRoles": ["824780897688879134","824781683911163985","826182753334591558"],
