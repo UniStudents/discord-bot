@@ -25,8 +25,13 @@ module.exports = {
                 entries: []
             }));
             //toDO check valid timestamp.
-            const auditEntry = fetchedLogs.entries.first()
-            const executor = auditEntry && auditEntry.executor ? message.guild.members.cache.get(auditEntry.executor.id) : 'Unknown';
+            const auditEntry = fetchedLogs.entries.find(a =>
+                a.target.id === message.author.id &&
+                a.extra.channel.id === message.channel.id &&
+                Date.now() - a.createdTimestamp < 20000
+            );
+
+            const executor = auditEntry && auditEntry.executor ? message.guild.members.cache.get(auditEntry.executor.id) : message.member;
             //Fields
             fields.set("Delete at",timeStamp)
             fields.set("Message",deletedContent)

@@ -3,6 +3,7 @@ const client = new discord.Client()
 const {prefix,devToken,token} = require('./Configs/botconfig.json')
 const commandHandler = require('./Managers/commandHandler')
 const eventHandler = require('./Managers/eventHandler')
+
 const env = process.env.NODE_ENV ? process.env.NODE_ENV.toString().trim() : "development"
 const runToken = env === "development" ? devToken : token
 
@@ -16,6 +17,7 @@ client.events = new discord.Collection();
 //todo handle it with error Handler
 commandHandler.run(client).catch(e => {console.log(e)});
 eventHandler.run(client).catch(e => { console.log(e)});
+
 
 
 
