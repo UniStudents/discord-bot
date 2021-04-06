@@ -15,17 +15,14 @@ module.exports = {
     usage: `${prefix}review`,
     permission: 1,
     execute: async (bot, message, args) => {
+        if (!args[0]) return error.send(bot, message.channel, `Required argument missing!\n\n Usage !review **<star number>** (comment)`);
 
-        if (!args[0]) return error.send(bot, message.channel, `Required argument missing!\n\n Usage !review **<star number>** <comment>`);
+        let comment = args.length >=2 ? args.slice(1).join(" ") : null;
 
-        else if (!args[1]) return error.send(bot, message.channel, `Required argument missing!\n\n Usage !review <star number> **<comment>**`);
+        if (args[0].match(/^[A-Za-z]+$/)) return error.send(bot, message.channel, `The star number must be a number!\n\n Usage !review **<star number>** <comment>`);
 
-        else if (args[0].match(/^[A-Za-z]+$/)) return error.send(bot, message.channel, `The star number must be a number!\n\n Usage !review **<star number>** <comment>`);
-
-        else {
-            await sendMessageToUser(bot, message.channel);
-            await sendFeedBack(bot, message.guild.channels.cache.get(reviewChannelID), message.author, parseInt(args[0]), args.slice(1).join(" "));
-        }
+        await sendMessageToUser(bot, message.channel);
+        await sendFeedBack(bot, message.guild.channels.cache.get(reviewChannelID), message.author, parseInt(args[0]), comment);
 
     }
 }
@@ -38,14 +35,12 @@ async function sendMessageToUser(bot, channel) {
 async function sendFeedBack(bot, channel, author, starCount, comment) {
 
     let ratingEmoji = bot.emojis.resolve(emojis['rating']);
-
-    //toDO stars.
-    //toDO make statement to avoid null array case.
-
+    let review = Array(5).fill("").map(x => `${ratingEmoji}`).join(" ")
     let fields = new Map();
     fields.set("Review By ",author.tag);
-    fields.set("Review ", ratingEmoji);
-    fields.set("Comment ", comment);
+    fields.set("Review ", review);
+    if(comment) fields.set("Comment ", comment);
+
 
     await sendMessageForm(bot, channel, "", fields, author.displayAvatarURL(), "New Review");
 

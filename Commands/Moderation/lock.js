@@ -10,7 +10,7 @@ module.exports = {
     name: "addUser",
     description:"Adds a user to a ticket.",
     aliases:["userAdd"],
-    category:"Ticket",
+    category:"🛠 Moderation",
     usage:`${prefix}addUser <@User>`,
     permission: 1,
     execute: async (bot,message,args) => {

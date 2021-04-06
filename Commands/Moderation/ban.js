@@ -15,11 +15,11 @@ module.exports = {
     name: "ban",
     description:"Bans a member.",
     aliases:["banUser"],
-    category:"Moderation",
+    category:"🛠 Moderation",
     usage:`${prefix}ban <member>`,
     permission: 8,
     execute: async (bot,message,args) => {
-        if(args.length<1) return error.send(bot,message.channel,`Required argument missing!\n\n Usage !ban **<member>**`)
+        if(args.length<1) return error.send(bot,message.channel,`Required argument missing!\n\n Usage !ban **<member>** <reason>`)
 
         let userToBan = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(member => member.name === args[0]) ||message.guild.members.cache.find(member => member.id === args[0])
         if(!userToBan) return error.send(bot,message.channel,`User not found!\n\n Usage !ban **<member>**`)

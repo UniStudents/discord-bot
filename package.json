@@ -21,6 +21,7 @@
   "homepage": "https://github.com/UniStudents/unistudents-bot#readme",
   "dependencies": {
     "date": "^1.0.2",
+    "discord-paginationembed": "^2.1.0",
     "discord.js": "^12.5.1",
     "glob": "^7.1.6",
     "luxon": "^1.26.0",
