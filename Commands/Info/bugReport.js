@@ -16,24 +16,18 @@ module.exports = {
     usage: `${prefix}bugReport`,
     permission: 1,
     execute: async (bot, message, args) => {
-        if (args.length !== 0 || args.length < 2) {
+        if (args.length !== 0 && args.length === 2) {
             let logChannel = message.guild.channels.cache.get(bugReportChannelId);
             let categories = bugs['categories'];
-            let found;
 
-            categories.forEach((item) => {
-                if (args[0] === item) {
-                    found = true;
-                }
-            })
+            let found = categories.some(item => item === args[0]);
 
             if (found) {
                 let fields = new Map();
                 let yesEmoji = bot.emojis.resolve(emojis['yesEmoji']);
                 let noEmoji = bot.emojis.resolve(emojis['noEmoji']);
                 fields.set("Category", args[0]);
-                fields.set("Submitted at", getDatePreFormatted() + " " + getTimePreFormatted())
-                fields.set("Reporter ID", message.author.id);
+                fields.set("Submitted at\n ", "**Date**: "+ getDatePreFormatted() + "\n **Time**: " + getTimePreFormatted())
                 fields.set("Info", message.content.replace(message.content.split(" ")[0], "").replace(args[0], ""));
 
                 await sendMessageForm(bot, message.channel, "Thanks for reporting a bug!", null, message.author.displayAvatarURL(), `${message.author.tag} Submitted a bug Report`);
@@ -44,11 +38,10 @@ module.exports = {
                     embedMessage.react(noEmoji);
                 }
 
-
-            } else {
+            }
+            else {
                 return error.send(bot, message.channel, `Unknown category!\n\n**Available Categories: ** \n [discord] \n [app] \n [site]\n\n Usage !bugReport **<catergory>** **<bug report>**`)
             }
-
 
         } else {
             return error.send(bot, message.channel, `Required argument missing!\n\n Usage !bugReport **<catergory>** **<bug report>**`)
