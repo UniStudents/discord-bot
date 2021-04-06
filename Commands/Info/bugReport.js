@@ -1,9 +1,8 @@
 const error = require('../../Utils/error')
 const emojis = require('../../Configs/emojis.json')
 const {prefix,footerText,footerIcon,color,version} = require('../../Configs/botconfig.json')
-const {bugReportChannelId} = require('../../Managers/configManager')()
+const {bugReportChannelId,bugs} = require('../../Managers/configManager')()
 const {sendMessageForm} = require('../../Managers/embedCreator');
-const {bugs} = require('../../Configs/bugconfig.json');
 const {getTimePreFormatted} = require("../../Utils/getTime");
 const {getDatePreFormatted} = require("../../Utils/getTime");
 

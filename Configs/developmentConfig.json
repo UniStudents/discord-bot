@@ -3,9 +3,14 @@
   "suggestionChannelId": "827084566275162122",
   "bugReportChannelId": "827084588639453214",
   "logsChannelId": "827945258331013141",
+  "reviewChannelID": "828961420291866696",
   "counters": {
     "memberCounterChannelId": "828683264868352092",
     "betaTestersCounterChannelId": "828684258125152288"
+  },
+  "bugs":{
+    "categories" : ["discord","app","site"],
+    "bugChannelId" : "1243256453632"
   },
   "ticket_settings": {
     "ticketCategoryId": "827663569494605885",
