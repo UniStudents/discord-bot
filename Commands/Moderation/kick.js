@@ -13,7 +13,7 @@ module.exports = {
     name: "kick",
     description:"Kicks a member.",
     aliases:["kickUser"],
-    category:"Moderation",
+    category:"🛠 Moderation",
     usage:`${prefix}kick <member> <reason>`,
     permission: 1,
     execute: async (bot,message,args) => {
