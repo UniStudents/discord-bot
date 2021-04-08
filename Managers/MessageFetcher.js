@@ -3,23 +3,21 @@ const db = require('quick.db');
 
 
 
-module.exports.fetch = async function (bot) {
-    let i = 0
+module.exports.fetch = function (bot) {
+
+
     //PreSet Messages
-    messages.forEach(message => {
-        bot.channels.fetch(message["channelID"]).then(channel=>{
-            if(message["messageID"]) return channel.messages.fetch(message["messageID"])
-        }).catch(e=>{
-            //console.log(e)
-        })
-    })
-    //Tickets
     let tickets = db.has("Tickets") ? db.get("Tickets") : []
-    tickets.forEach(ticket =>{
-        bot.channels.fetch(ticket["channelID"]).then(channel=>{
-            channel.messages.fetch(ticket["initialMessageID"])
-        }).catch(e=>{
-            //console.log(e)
-        })
-    })
+    let fetchMessagesPromises = messages.map(message =>fetch(message["channelID"],message["messageID"],bot))
+    let ticketPromises = tickets.map(ticket => fetch(ticket["channelID"],ticket["initialMessageID"],bot))
+    let promises = [].concat.apply([], [ticketPromises,fetchMessagesPromises]);
+    return Promise.all(promises)
+}
+
+async function fetch(channelID,messageID,bot){
+  let channel = await bot.channels.fetch(channelID).catch(e=>{});
+  if(!channel) return 0
+  let message = await channel.messages.fetch(messageID).catch(e=>{});
+  if(!message) return 0;
+  return  1
 }

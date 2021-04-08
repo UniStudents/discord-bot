@@ -23,6 +23,6 @@ module.exports = {
         if(isCreated){
             ticket.saveTicket()
         }
-        //todo add close ticket with Timer
+        //todo add close ticket with/without Timer
     }
 }

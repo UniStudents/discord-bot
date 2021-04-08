@@ -15,20 +15,32 @@ module.exports = class Ticket {
     initialMessage
     subject
     guild
-    constructor(message) {
-        this.message = message;
-        this.author = message.author;
-        this.ticketCreatedAt = Date.now();
-        this.name = `ticket-${this.author.id}`
-        this.guild = message.guild.id;
+    command
+    constructor(message,user=null) {
+        if(!user) {
+            this.message = message;
+            this.author = message.author;
+            this.ticketCreatedAt = Date.now();
+            this.name = `ticket-${this.author.id}`
+            this.guild = message.guild;
+            this.command = true
+        }else{
+            this.message = message;
+            this.author = user;
+            this.ticketCreatedAt = Date.now();
+            this.name = `ticket-${this.author.id}`
+            this.guild = message.guild;
+            this.command = false
+        }
     }
+
     //Save Ticket into Db
     saveTicket() {
         db.push("Tickets",{
             name : this.name,
             createdAt: this.ticketCreatedAt,
             channelID: this.channel.id,
-            guildID: this.guild,
+            guildID: this.guild.id,
             author: this.author,
             subject: this.subject,
             initialMessageID: this.initialMessage.id
@@ -38,21 +50,29 @@ module.exports = class Ticket {
     //Create Ticket Function
     async create(bot,guild,subject){
         let tickets = db.has("Tickets") ? db.get("Tickets") : []
-        if(tickets.some(ticket => ticket.name === `${this.name}`)){
-            let ticket = tickets.find(ticket => ticket.name === `${this.name}`)
-            if(guild.channels.cache.has(ticket.channelID)) {
-                await error.send(bot, this.message.channel, "You already have an opened ticket\nMax amount of tickets is \`\`1\`\`.")
+        //Clear none used tickets from db
+        tickets = tickets.filter(ticket => Array.from(guild.channels.cache.keys()).includes(ticket.channelID));
+        await db.set("Tickets",tickets)
+        //Max ticket logic
+        if(tickets.length >= config.ticket_settings.maxTickets){
+         if(this.command) await error.send(bot, this.message.channel, `Max amount of opened tickets reached. Try again later!\nMax amount of opened tickets is \`\`${config.ticket_settings.maxTickets}\`\`.`)
+            return false
+        }
+        //Max ticket per user logic
+        if(tickets.some(ticket => ticket.author.id === this.author.id)){
+            let userOpenedTicket = tickets.filter(ticket => ticket.author.id === this.author.id)
+            if(userOpenedTicket.length >= config.ticket_settings.ticketsPerUser){
+                if(this.command) await error.send(bot, this.message.channel, `You already have an opened ticket\nMax amount of tickets is \`\`${config.ticket_settings.ticketsPerUser}\`\`.`)
                 return false
-            }else{
-                db.delete("Tickets",ticket)
             }
         }
+
         this.subject =subject;
         let ticketCategory = bot.channels.cache.find(channel => channel.id === config.ticket_settings.ticketCategoryId)
-        if(!ticketCategory || ticketCategory.guild !== this.message.guild) throw new Error("TicketCategory Not Found")
+        if(!ticketCategory || ticketCategory.guild.id !== this.guild.id) throw new Error("TicketCategory Not Found")
         this.channel = await guild.channels.create(`${this.name}`)
         await this.channel.setParent(ticketCategory.id)
-        let guild_roles = this.message.guild.roles
+        let guild_roles = this.guild.roles
         let rolesToOverwritePermsAllow = config.ticket_settings.ticketAccessRoles.map(roleId =>{
             if(guild_roles.cache.has(roleId)){
                 return {
@@ -62,7 +82,7 @@ module.exports = class Ticket {
             }
         })
         let extraPerms = [{
-            id: this.message.author.id,
+            id: this.author.id,
             allow: ['VIEW_CHANNEL','SEND_MESSAGES','ATTACH_FILES','READ_MESSAGE_HISTORY']
         },{
             id: config.ticket_settings.everyoneRoleId,
@@ -70,26 +90,28 @@ module.exports = class Ticket {
         }]
         //Merge Arrays
         rolesToOverwritePermsAllow = extraPerms.concat(rolesToOverwritePermsAllow)
-        console.log(rolesToOverwritePermsAllow)
+        //console.log(rolesToOverwritePermsAllow)
         await this.channel.overwritePermissions(rolesToOverwritePermsAllow)
         //Send Info Messages
         let tick = bot.emojis.resolve(emojis["tick"])
         let embed = new discord.MessageEmbed()
            .setColor(color)
-           .setAuthor(`${this.message.author.tag}`,this.message.author.displayAvatarURL())
-           .setDescription(`Hello ${this.message.author},\n\nYour ticket created successfully! ${tick}\nChannel: ${this.channel}`)
+           .setAuthor(`${this.author.tag}`,this.author.displayAvatarURL())
+           .setDescription(`Hello ${this.author},\n\nYour ticket created successfully! ${tick}\nChannel: ${this.channel}`)
            .setTimestamp()
            .setFooter(footerText.replace("%version%",version))
-        await this.message.channel.send(embed)
-        let mentionMessage =  config.ticket_settings.ticketAccessRoles.map(roleId=> `<@&${roleId}>`).join(" ") + ` ${this.message.author}`
+        if(this.command) await this.message.channel.send(embed)
+        let mentionMessage =  config.ticket_settings.ticketAccessRoles.map(roleId=> `<@&${roleId}>`).join(" ") + ` ${this.author}`
+        let ticketDelete = bot.emojis.resolve(emojis["ticketDelete"])
         let supportMessage = new discord.MessageEmbed()
             .setColor(color)
-            .setAuthor(`${this.message.author.tag}`,this.message.author.displayAvatarURL())
-            .setDescription(`Dear ${this.message.author},\n\nThank you for reaching out to our support team!\nOur staff will be with you as soon as possible`)
-            .addField("Your Subject", this.subject)
+            .setAuthor(`${this.author.tag}`,this.author.displayAvatarURL())
+            .setDescription(`Dear ${this.author},\n\nThank you for reaching out to our support team!\nOur staff will be with you as soon as possible\n\nReact bellow with ${ticketDelete} to close your ticket any time`)
             .setTimestamp()
             .setFooter(footerText.replace("%version%",version))
+        if(this.subject) supportMessage.addField("Your Subject", this.subject)
         this.initialMessage = await this.channel.send(supportMessage)
+        await this.initialMessage.react(ticketDelete)
         await this.channel.send(mentionMessage).then(message => message.delete({ timeout: 200 }))
         return true
 
