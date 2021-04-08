@@ -20,9 +20,10 @@ module.exports = {
         let comment = args.length >=2 ? args.slice(1).join(" ") : null;
 
         if (args[0].match(/^[A-Za-z]+$/)) return error.send(bot, message.channel, `The star number must be a number!\n\n Usage !review **<star number>** <comment>`);
-
+        let starCount = parseInt(args[0])
+        if(starCount<=0) return error.send(bot, message.channel, `The star number must be greater than 0!\n\n Usage !review **<star number>** <comment>`);
         await sendMessageToUser(bot, message.channel);
-        await sendFeedBack(bot, message.guild.channels.cache.get(reviewChannelID), message.author, parseInt(args[0]), comment);
+        await sendFeedBack(bot, message.guild.channels.cache.get(reviewChannelID), message.author, starCount, comment);
 
     }
 }
@@ -35,7 +36,7 @@ async function sendMessageToUser(bot, channel) {
 async function sendFeedBack(bot, channel, author, starCount, comment) {
 
     let ratingEmoji = bot.emojis.resolve(emojis['rating']);
-    let review = Array(5).fill("").map(x => `${ratingEmoji}`).join(" ")
+    let review = Array(starCount <=5 ? starCount : 5).fill("").map(x => `${ratingEmoji}`).join(" ")
     let fields = new Map();
     fields.set("Review By ",author.tag);
     fields.set("Review ", review);

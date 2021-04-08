@@ -1,7 +1,9 @@
 [{
   "channelID":"826562614456614914",
-  "messageID": "828670329232031794"
+  "messageID": "828670329232031794",
+  "info": "Test message id"
 },{
-  "channelID":"",
-  "messageID": ""
+  "channelID":"828025750116106330",
+  "messageID": "829404521263267852",
+  "info": "Support message id"
 }]

@@ -1,5 +1,6 @@
 const {prefix} = require('../Configs/botconfig.json')
 const error = require('../Utils/error')
+const db = require('quick.db');
 
 module.exports = {
     name: "message",
@@ -12,16 +13,16 @@ module.exports = {
             let commandToExecute = bot.commands.get(cmdName) || Array.from(bot.commands.values()).find(cmdFile => cmdFile.aliases && cmdFile.aliases.includes(cmdName))
             if(commandToExecute){
                 msg.delete()
-                commandToExecute.execute(bot,msg,args)
-                /*if(!permissions[msg.author.id]){
-                    permissions = utils.saveUserToJson(permissions,msg.author)
+                let permissions = db.has("Permissions") ? db.get("Permissions") : {}
+                if(!permissions[msg.author.id]){
+                    db.set(`Permissions.${msg.author.id}`,{perm:1})
                 }
-                //todo handle it with sql
-                if(permissions[msg.author.id]["perm"] >=  commandToExecute.permission){
+                let userPerm = db.has(`Permissions.${msg.author.id}`) ? db.get(`Permissions.${msg.author.id}`).perm : 1
+                if(userPerm >=  commandToExecute.permission){
                     commandToExecute.execute(bot,msg,args)
                 }else{
                     error.send(bot,msg.channel,"You dont have permission to do that")
-                }*/
+                }
             }
         })
     }

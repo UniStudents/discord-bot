@@ -16,6 +16,12 @@
   "ticket_settings": {
     "ticketCategoryId": "827606788932239420",
     "ticketAccessRoles": ["824780897688879134","824781683911163985","826182753334591558"],
-    "everyoneRoleId": "824026103471013978"
+    "everyoneRoleId": "824026103471013978",
+    "maxTickets": 50,
+    "ticketsPerUser": 1
+  },
+  "support_settings": {
+    "supportChannelId": "828700871571013704",
+    "supportMessageId": "829489992627126302"
   }
 }

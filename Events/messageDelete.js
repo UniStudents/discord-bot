@@ -24,7 +24,6 @@ module.exports = {
             }).catch(() => ({
                 entries: []
             }));
-            //toDO check valid timestamp.
             const auditEntry = fetchedLogs.entries.find(a =>
                 a.target.id === message.author.id &&
                 a.extra.channel.id === message.channel.id &&

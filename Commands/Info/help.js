@@ -61,7 +61,7 @@ module.exports = {
            .setFooter(`Requested by ${message.author.username} | Page 1 of ${embeds.length}`,message.author.displayAvatarURL())
            .on('expire', (t,instance) => {
                let msg = instance.clientAssets.message
-               let expire = bot.emojis.resolve(emojis["notification"])
+               let expire = bot.emojis.resolve(emojis["expire"])
                const expired = new discord.MessageEmbed()
                    .setColor(`#00000`)
                    .setFooter(footerText.replace("%version%",version),message.author.displayAvatarURL())

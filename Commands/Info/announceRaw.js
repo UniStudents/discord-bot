@@ -4,9 +4,9 @@ const error = require('../../Utils/error')
 const emojis = require('../../Configs/emojis.json')
 
 module.exports = {
-    name: "announce",
-    description:"Make an announcement.",
-    aliases:["an"],
+    name: "announceraw",
+    description:"Make an raw announcement.",
+    aliases:["annraw","raw"],
     category:"📝 Info",
     usage:`${prefix}announce`,
     permission: 5,
@@ -15,16 +15,16 @@ module.exports = {
         if(!channelToAnnounce) return error.send(bot,message.channel,`Required argument missing!\n\n Usage: !announce **<channel>** <announce text>`)
 
         let whatToAnnounce = args.slice(1).join(' ')
-        if(!whatToAnnounce) return error.send(bot,message.channel,`Required argument missing!\n\n Usage: !announce <channel> **<announce text>**`)
+        if(!whatToAnnounce &&message.attachments.size<1) return error.send(bot,message.channel,`Required argument missing!\n\n Usage: !announce <channel> **<announce text>**`)
 
         //Send embed
-        let announce = bot.emojis.resolve(emojis["notification"])
-        let embedMessage = new discord.MessageEmbed()
-            .setTitle(`**${channelToAnnounce.name.toUpperCase()}**`)
-            .setColor(color)
-            .setDescription(`${whatToAnnounce}\n\n${announce} Announcement by: ${message.author}`)
-            .setFooter(footerText.replace("%version%",version),message.author.displayAvatarURL())
-            .setTimestamp();
-        await channelToAnnounce.send(embedMessage)
+        let url
+        if(message.attachments.size>=1){
+            url = message.attachments.first().url;
+            await channelToAnnounce.send(whatToAnnounce, {files: [`${url}`]})
+
+        }else{
+            await channelToAnnounce.send(whatToAnnounce)
+        }
     }
 }
