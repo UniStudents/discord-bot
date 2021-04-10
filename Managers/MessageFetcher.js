@@ -4,8 +4,6 @@ const db = require('quick.db');
 
 
 module.exports.fetch = function (bot) {
-
-
     //PreSet Messages
     let tickets = db.has("Tickets") ? db.get("Tickets") : []
     let fetchMessagesPromises = messages.map(message =>fetch(message["channelID"],message["messageID"],bot))

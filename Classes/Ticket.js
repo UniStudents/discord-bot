@@ -61,7 +61,8 @@ module.exports = class Ticket {
         //Max ticket per user logic
         if(tickets.some(ticket => ticket.author.id === this.author.id)){
             let userOpenedTicket = tickets.filter(ticket => ticket.author.id === this.author.id)
-            if(userOpenedTicket.length >= config.ticket_settings.ticketsPerUser){
+            let userPerm = db.has(`Permissions.${this.author.id}`) ? db.get(`Permissions.${this.author.id}`).perm : 1
+            if(userOpenedTicket.length >= config.ticket_settings.ticketsPerUser && userPerm < 8){
                 if(this.command) await error.send(bot, this.message.channel, `You already have an opened ticket\nMax amount of tickets is \`\`${config.ticket_settings.ticketsPerUser}\`\`.`)
                 return false
             }
@@ -90,7 +91,7 @@ module.exports = class Ticket {
         }]
         //Merge Arrays
         rolesToOverwritePermsAllow = extraPerms.concat(rolesToOverwritePermsAllow)
-        //console.log(rolesToOverwritePermsAllow)
+
         await this.channel.overwritePermissions(rolesToOverwritePermsAllow)
         //Send Info Messages
         let tick = bot.emojis.resolve(emojis["tick"])
@@ -106,7 +107,7 @@ module.exports = class Ticket {
         let supportMessage = new discord.MessageEmbed()
             .setColor(color)
             .setAuthor(`${this.author.tag}`,this.author.displayAvatarURL())
-            .setDescription(`Dear ${this.author},\n\nThank you for reaching out to our support team!\nOur staff will be with you as soon as possible\n\nReact bellow with ${ticketDelete} to close your ticket any time`)
+            .setDescription(`Hello  ${this.author} 👋,\n\nΛάβαμε το αίτημά σου και πολύ σύντομα θα είμαστε μαζί σου.\n\nΜπορείς οποιαδήποτε στιγμή να αντίδράσεις με ένα ${ticketDelete} για να κλήσεις την αναφορά.`)
             .setTimestamp()
             .setFooter(footerText.replace("%version%",version))
         if(this.subject) supportMessage.addField("Your Subject", this.subject)
@@ -114,6 +115,5 @@ module.exports = class Ticket {
         await this.initialMessage.react(ticketDelete)
         await this.channel.send(mentionMessage).then(message => message.delete({ timeout: 200 }))
         return true
-
     }
 }

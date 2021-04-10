@@ -11,7 +11,7 @@ module.exports = {
     description:"Adds a user to a ticket.",
     aliases:["purge"],
     category:"🛠 Moderation",
-    usage:`${prefix}addUser <@User>`,
+    usage:`${prefix}clear <number>`,
     permission: 5,
     execute: async (bot,message,args) => {
         let messagesToDelete = args.length>0 && !args[0].match(/^[A-Za-z]+$/) ? args[0] : null

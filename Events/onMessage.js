@@ -10,7 +10,7 @@ module.exports = {
             if(!message.startsWith(prefix)) return
             let args = message.slice(prefix.length).trim().split(' ')
             let cmdName = args.shift().toLowerCase()
-            let commandToExecute = bot.commands.get(cmdName) || Array.from(bot.commands.values()).find(cmdFile => cmdFile.aliases && cmdFile.aliases.includes(cmdName))
+            let commandToExecute = bot.commands.get(cmdName) || Array.from(bot.commands.values()).find(cmdFile => cmdFile.aliases && cmdFile.aliases.map(alias => alias.toLowerCase()).includes(cmdName.toLowerCase()))
             if(commandToExecute){
                 msg.delete()
                 let permissions = db.has("Permissions") ? db.get("Permissions") : {}

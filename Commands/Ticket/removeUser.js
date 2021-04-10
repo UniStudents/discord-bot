@@ -12,7 +12,7 @@ module.exports = {
     aliases:["userRemove"],
     category:"Ticket",
     usage:`${prefix}removeUser <@User>`,
-    permission: 1,
+    permission: 8,
     execute: async (bot,message,args) => {
         let tickets = db.has("Tickets") ? db.get("Tickets") : []
         if(!tickets.some(ticket => ticket.channelID === message.channel.id)) return error.send(bot,message.channel,`This command can only be used under Ticket channels!`)

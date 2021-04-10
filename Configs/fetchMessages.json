@@ -1,9 +1,30 @@
 [{
-  "channelID":"826562614456614914",
-  "messageID": "828670329232031794",
-  "info": "Test message id"
-},{
-  "channelID":"828025750116106330",
-  "messageID": "829404521263267852",
-  "info": "Support message id"
-}]
+  "channelID":"828700871571013704",
+  "messageID": "829827909715230730",
+  "info": "Support message id production"
+ },
+  {
+  "channelID":"829413767937916991",
+  "messageID": "829502284940967999",
+  "info": "Support message id dev"
+ },
+  {
+    "channelID":"828025750116106330",
+    "messageID": "830173540044505108",
+    "info": "Welcome dev"
+  },
+  {
+    "channelID":"828029522023546890",
+    "messageID": "830377521178083339",
+    "info": "Welcome prod"
+  },
+  {
+    "channelID":"824777434922614864",
+    "messageID": "830390922650189834",
+    "info": "BetaTester Prod"
+  },
+  {
+    "channelID":"830059157247230004",
+    "messageID": "830390434558771260",
+    "info": "BetaTester Dev"
+  }]
