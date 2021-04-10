@@ -12,9 +12,9 @@ module.exports.setup = async (bot) =>{
 
     let ticket = bot.emojis.resolve(emojis["ticket"])
     let supportChat = new discord.MessageEmbed()
-        .setTitle(`**UniStudents Ticket Creation**`)
+        .setTitle(`**UniStudent - Δημιουργία Αναφοράς**`)
         .setColor(color)
-        .setDescription(`Thank you for showing interest on UniStudents!\nIf you have a question or you need something\nfeel free to open a ticket!\n\n${ticket} Just react bellow and the first available staff will contact you asap!`)
+        .setDescription(`Σε ευχαριστούμε πολύ για το ενδιαφέρον σου για το UniStudents!\nΕάν έχεις κάποια απορία ή χρειάζεσαι βοήθεια μη διστάσεις να δημιουργήσεις μια νέα αναφορά.\n\nΑπλα κανε react με ${ticket} και ένας από τους διαθέσιμους διαχειριστές θα έρθει σε επικοινωνία μαζί σου το συντομότερο δυνατό.`)
         .setFooter(footerText.replace("%version%",version),message.author.displayAvatarURL())
         .setTimestamp();
     if(message.embeds.length<1 || message.embeds[0].description !== supportChat.description){

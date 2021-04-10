@@ -12,7 +12,7 @@ module.exports = {
     aliases:["userAdd"],
     category:"Ticket",
     usage:`${prefix}addUser <@User>`,
-    permission: 1,
+    permission: 8,
     execute: async (bot,message,args) => {
         let tickets = db.has("Tickets") ? db.get("Tickets") : []
         if(!tickets.some(ticket => ticket.channelID === message.channel.id)) return error.send(bot,message.channel,`This command can only be used under Ticket channels!`)
@@ -36,5 +36,7 @@ module.exports = {
             .setDescription(`Successfully added user ${userToAdd} to the ticket ${tick}`)
             .setTimestamp()
         await message.channel.send(added)
+        await message.channel.send(`${userToAdd}`).then(message => message.delete({timout:200}))
+
     }
 }

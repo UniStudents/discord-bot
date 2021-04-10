@@ -15,7 +15,7 @@ module.exports = {
     aliases:["kickUser"],
     category:"🛠 Moderation",
     usage:`${prefix}kick <member> <reason>`,
-    permission: 1,
+    permission: 8,
     execute: async (bot,message,args) => {
         if(args.length<1) return error.send(bot,message.channel,`Required argument missing!\n\n Usage !kick **<member>** <reason>`)
 

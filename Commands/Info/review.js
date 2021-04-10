@@ -12,7 +12,7 @@ module.exports = {
     description: "Make a review!",
     aliases: ["feedback"],
     category: "📝 Info",
-    usage: `${prefix}review`,
+    usage: `${prefix}review <stars> (comment)`,
     permission: 1,
     execute: async (bot, message, args) => {
         if (!args[0]) return error.send(bot, message.channel, `Required argument missing!\n\n Usage !review **<star number>** (comment)`);

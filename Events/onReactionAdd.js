@@ -6,13 +6,6 @@ const config =  require('../Managers/configManager')()
 const db = require('quick.db');
 
 
-
-
-const activities = [
-    "with your grades",
-    "with your progress"
-]
-
 module.exports = {
     name: "messageReactionAdd",
     execute: async (bot) => {
@@ -29,6 +22,10 @@ module.exports = {
                 reaction.message.channel.delete("Ticket deleted by user")
                 //todo add transScript send to user and logs
             }
+            //Announcement Role Handler
+            if(reaction.message.id === config.welcome_settings.welcomeMessageId) {
+                handleAnnouncement(reaction,user,bot)
+            }
 
         })
     }
@@ -41,4 +38,13 @@ function ticketSupportFunction(reaction,user,bot){
             ticket.saveTicket()
         }
     })
+}
+
+function handleAnnouncement(reaction,user,bot){
+    let annRole = reaction.message.guild.roles.cache.get(config.welcome_settings.announcementsRoleId)
+    let member = reaction.message.guild.members.cache.get(user.id)
+    if(!member || !annRole) return
+    if(!member.roles.cache.has(annRole.id)){
+        member.roles.add(annRole)
+    }
 }

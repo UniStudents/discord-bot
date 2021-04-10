@@ -23,5 +23,19 @@
   "support_settings": {
     "supportChannelId": "828700871571013704",
     "supportMessageId": "829489992627126302"
+  },
+  "welcome_settings": {
+    "welcomeChannelId": "828029522023546890",
+    "welcomeMessageId": "830377521178083339",
+    "announcementsRoleId": "830369093952602112"
+  },
+  "betaTesters_settings": {
+    "betaTesterChannelId": "824777434922614864",
+    "betaTesterMessageId": "830390922650189834",
+    "betaTesterRoleId": "824781349524996166",
+    "betaTesterGeneralChannelId": "824777499904049222",
+    "betaTesterParentCategory": "828700395604934779",
+    "betaAccessRoles": ["824780897688879134","824781683911163985","826182753334591558"],
+    "betaTestersMax": 100
   }
 }

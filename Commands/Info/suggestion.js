@@ -11,7 +11,7 @@ module.exports = {
     description:"Make a suggestion.",
     aliases:["sg","suggest"],
     category:"📝 Info",
-    usage:`${prefix}suggestion`,
+    usage:`${prefix}suggestion <suggestion text>`,
     permission: 1,
     execute: async (bot, message, args) => {
         if (args.length !== 0) {

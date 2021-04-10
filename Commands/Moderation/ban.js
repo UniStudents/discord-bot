@@ -16,7 +16,7 @@ module.exports = {
     description:"Bans a member.",
     aliases:["banUser"],
     category:"🛠 Moderation",
-    usage:`${prefix}ban <member>`,
+    usage:`${prefix}ban <member> <reason>`,
     permission: 8,
     execute: async (bot,message,args) => {
         if(args.length<1) return error.send(bot,message.channel,`Required argument missing!\n\n Usage !ban **<member>** <reason>`)

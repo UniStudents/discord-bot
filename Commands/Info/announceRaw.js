@@ -8,7 +8,7 @@ module.exports = {
     description:"Make an raw announcement.",
     aliases:["annraw","raw"],
     category:"📝 Info",
-    usage:`${prefix}announce`,
+    usage:`${prefix}announce <channel> <text>`,
     permission: 5,
     execute: async (bot,message,args) => {
         let channelToAnnounce = message.mentions.channels.first() || message.guild.channels.cache.get(args[0]) || Array.from(message.guild.channels.cache.values()).find(channel => channel.name === args[0])
