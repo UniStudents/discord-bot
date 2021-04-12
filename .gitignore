@@ -84,6 +84,9 @@ Configs/botconfig.json
 .nuxt
 dist
 
+#SQL
+json.sqlite
+
 # Gatsby files
 .cache/
 # Comment in the public line in if your project uses Gatsby and *not* Next.js

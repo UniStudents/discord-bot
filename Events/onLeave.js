@@ -18,6 +18,24 @@ module.exports = {
                 console.log(testers)
                 db.set("BetaTesters.list",testers)
             }
+            //Leave announce
+            announceLeave(guildMember)
+
         })
     }
+}
+
+function announceLeave(guildMember){
+    let dateJoined = guildMember.joinedAt
+    let diff = Date.now() - dateJoined
+    let final = parseInt(diff)/86400000
+
+    const leaveChannel = guildMember.guild.channels.cache.get(config.leavesChannelId)
+    let leaveEmbed =  new discord.MessageEmbed()
+        .setAuthor(guildMember.user.tag,guildMember.user.displayAvatarURL())
+        .setColor(color)
+        .setDescription(`**User: ** ${guildMember.user.tag}\nHas left the server\n\n**He was in the server for: ** ${final.toFixed(0)} days`)
+        .setFooter(version)
+        .setTimestamp();
+     leaveChannel.send(leaveEmbed)
 }
