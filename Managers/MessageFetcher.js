@@ -6,9 +6,15 @@ const db = require('quick.db');
 module.exports.fetch = function (bot) {
     //PreSet Messages
     let tickets = db.has("Tickets") ? db.get("Tickets") : []
+    let applications = db.has("Applications") ? db.get("Applications") : []
+
+
     let fetchMessagesPromises = messages.map(message =>fetch(message["channelID"],message["messageID"],bot))
     let ticketPromises = tickets.map(ticket => fetch(ticket["channelID"],ticket["initialMessageID"],bot))
-    let promises = [].concat.apply([], [ticketPromises,fetchMessagesPromises]);
+    let applicationPromises = applications.map(ticket => fetch(ticket["channelID"],ticket["initialMessageID"],bot))
+    let applicationAcceptPromises = applications.map(ticket => fetch(ticket["channelID"],ticket["acceptMessageID"],bot))
+
+    let promises = [].concat.apply([], [ticketPromises,fetchMessagesPromises,applicationPromises,applicationAcceptPromises]);
     return Promise.all(promises)
 }
 
