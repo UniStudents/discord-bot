@@ -137,15 +137,15 @@ async function startMessageValidation(message,bot,answer,member,channel){
         return user.id === member.id && reaction.message.id === message.id;
     };
     const collector = message.createReactionCollector(filter, { max: 1,time: 5*60*1000 });
-    let extraPerms = [{
-        id: member,
-        deny: ['VIEW_CHANNEL','SEND_MESSAGES','ATTACH_FILES','READ_MESSAGE_HISTORY']
-    }]
-
     collector.on('collect', (reaction, user) => {
 
         if(reaction.emoji.id === yesEmoji.id){
-            channel.overwritePermissions(extraPerms)
+            channel.updateOverwrite(member,{
+                VIEW_CHANNEL: false,
+                SEND_MESSAGES: false,
+                ATTACH_FILES: false,
+                READ_MESSAGE_HISTORY: false
+            })
             logAnalytics(bot,answer,member,channel)
         }else{
             channel.delete("Application deleted by user")
