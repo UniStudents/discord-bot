@@ -18,6 +18,7 @@ module.exports = {
     execute: async (bot,message,args) => {
         let testers = db.has("BetaTesters") ? db.get("BetaTesters").list : {}
         let testersMax = db.has("BetaTesters") ? db.has("BetaTesters").max : config.betaTesters_settings.betaTestersMax
+        let testerAnswers = db.has("ApplicationsInfo") ? db.get("ApplicationsInfo") : {}
         let currentTestersAmount = Object.keys(testers).length
         if(currentTestersAmount>=testersMax) await error.send(bot, this.message.channel, `Max amount of UniTesters reached!\nMax amount of UniTesters is \`\`${testersMax}\`\`.`)
         if(args.length<1) return error.send(bot,message.channel,`Required argument missing!\n\n Usage !addUniTester **<@User>**`)
@@ -31,7 +32,9 @@ module.exports = {
             name: userToAdd.user.tag,
             id: userToAdd.id,
         }
+        testerAnswers[userToAdd.id] = {}
         db.set("BetaTesters.list",testers)
+        db.set("ApplicationsInfo",testerAnswers)
         let tick = bot.emojis.resolve(emojis["tick"])
         let added = new discord.MessageEmbed()
             .setColor(color)
