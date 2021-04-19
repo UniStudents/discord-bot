@@ -107,3 +107,5 @@ json.sqlite
 
 # TernJS port file
 .tern-port
+json.sqlite
+*.sqlite
