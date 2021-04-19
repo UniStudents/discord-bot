@@ -36,7 +36,6 @@ module.exports = {
             }
             let applications = db.has("Applications") ? db.get("Applications") : []
             if(applications.some(application => application.initialMessageID === reaction.message.id && reaction.message.id === application.initialMessageID )){
-                console.log("Asdsadasdasd")
                 reaction.message.channel.delete("Application deleted by user")
             }
             //handle accept

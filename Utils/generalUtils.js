@@ -12,5 +12,14 @@ module.exports = {
             })
         )
       return objectArray
+    },
+
+    chunk_inefficient:(chunkSize,objectArray)=>{
+        objectArray = [].concat.apply([],
+            objectArray.map(function(elem, i) {
+                return i % chunkSize ? [] : [objectArray.slice(i, i + chunkSize)];
+            })
+        )
+        return objectArray
     }
 }

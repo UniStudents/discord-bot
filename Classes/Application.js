@@ -191,5 +191,8 @@ async function logAnalytics(bot,answers,member,channel){
         return application
     })
     await db.set("Applications",applications)
+    let testers = db.has("ApplicationsInfo") ? db.get("ApplicationsInfo") : {}
+    testers[member.id] = await Object.fromEntries(answers)
+    db.set("ApplicationsInfo",testers)
 
 }
