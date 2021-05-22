@@ -66,8 +66,8 @@ async function parseMiddleware(message,bot){
                 error.send(bot,message.channel,`RSS parser Error Info: ${e} `)
             })
         }else if(file.type && file.type.toLowerCase() === "html"){
-            if(file && file.url && file.scrape && file.container) {
-                parsed = await htmlParser.default.parse(file.url, file.scrape, file.container)
+            if(file && file.url && file.scrape && file.container && file.endPoint) {
+                parsed = await htmlParser.default.parse(file.url, file.scrape, file.container , file.endPoint)
             }
         }
         if(!parsed) {
