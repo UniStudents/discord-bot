@@ -58,9 +58,12 @@ async function parseMiddleware(message,bot){
             return awaitEmbed.delete()
         }
         if(!file || !file.url) return awaitEmbed.delete()
-        let parsed = await rssParser.default.rssParser(file.url).catch(e=>{
-             error.send(bot,message.channel,`RSS parser Error Info: ${e} `)
-        })
+        let parsed;
+        if(file.type && file.type.toLowerCase() === "rss"){
+            parsed = await rssParser.default.rssParser(file.url).catch(e=>{
+                error.send(bot,message.channel,`RSS parser Error Info: ${e} `)
+            })
+        }
         if(!parsed) {
             await error.send(bot,message.channel,"Malformed JSON file or some provided data are wrong")
             return awaitEmbed.delete()
