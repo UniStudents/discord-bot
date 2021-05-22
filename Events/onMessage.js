@@ -8,6 +8,8 @@ const db = require('quick.db');
 const request = require(`request`);
 const fs = require(`fs`);
 const rssParser = require('../Utils/Parsers/rss')
+const htmlParser = require('../Utils/Parsers/htmlParser')
+
 const emojis = require('../Configs/emojis.json')
 
 
@@ -63,6 +65,10 @@ async function parseMiddleware(message,bot){
             parsed = await rssParser.default.rssParser(file.url).catch(e=>{
                 error.send(bot,message.channel,`RSS parser Error Info: ${e} `)
             })
+        }else if(file.type && file.type.toLowerCase() === "html"){
+            if(file && file.url && file.scrape && file.container) {
+                parsed = await htmlParser.default.parse(file.url, file.scrape, file.container)
+            }
         }
         if(!parsed) {
             await error.send(bot,message.channel,"Malformed JSON file or some provided data are wrong")
