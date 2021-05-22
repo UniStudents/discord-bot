@@ -44,22 +44,44 @@ class HtmlParser {
      * @param location The location  ( depth ) in the html content we are currently on.
      * @param dataStoredAt From which point should we get the data.
      * @param attributesArr The array that contains the information that helps to get the appropriate attributes.
+     * @param endPoint
      */
     static attributes(location,
                       dataStoredAt,
-                      attributesArr) {
+                      attributesArr,
+                      endPoint) {
 
         let obj = {};
+
+        if (Utils_1.default.htmlStrip(location.find(dataStoredAt).text()) === '') return null;
+
         if (attributesArr.includes("value")) {
-            obj = {
-                attribute: location.find(dataStoredAt).attr(attributesArr[attributesArr.length - 1]),
-                value: Utils_1.default.htmlStrip(location.find(dataStoredAt).text())
-            };
+            if (attributesArr.includes("href")) {
+                obj = {
+                    attribute: endPoint+location.find(dataStoredAt).attr(attributesArr[attributesArr.length - 1]),
+                    value: Utils_1.default.htmlStrip(location.find(dataStoredAt).text())
+                };
+            }
+            else {
+                obj = {
+                    attribute: location.find(dataStoredAt).attr(attributesArr[attributesArr.length - 1]),
+                    value: Utils_1.default.htmlStrip(location.find(dataStoredAt).text())
+                };
+            }
+
         }
         else {
-            obj = {
-                attribute: location.find(dataStoredAt).attr(attributesArr[attributesArr.length - 1])
-            };
+            if (attributesArr.includes("href")) {
+                obj = {
+                    attribute: location.find(dataStoredAt).attr(attributesArr[attributesArr.length - 1])
+                };
+            }
+            else {
+                obj = {
+                    attribute: endPoint+location.find(dataStoredAt).attr(attributesArr[attributesArr.length - 1])
+                };
+            }
+
         }
         return obj;
     }
@@ -76,6 +98,7 @@ class HtmlParser {
      * @param multiple Indicates whether the parser should get more than one item ( e.g link ) from the article we access.
      * @param hasAttributes Indicates whether we should take any attributes from the article.
      * @param attributesArr The array that contains the information that helps to get the appropriate attributes.
+     * @param endPoint
      * @private
      */
     static findMultiple(instructions,
@@ -84,7 +107,8 @@ class HtmlParser {
                         htmlClass,
                         multiple = false,
                         hasAttributes = false,
-                        attributesArr) {
+                        attributesArr,
+                        endPoint) {
 
         let results = new Array();
         let tmpElement = htmlContent(currArticle).find(htmlClass);
@@ -117,7 +141,8 @@ class HtmlParser {
                     results.push(Utils_1.default.htmlStrip(finalData.find(dataStoredAt).text()));
                 }
                 else {
-                    results.push(HtmlParser.attributes(finalData, dataStoredAt, attributesArr));
+                    let tmp = HtmlParser.attributes(finalData, dataStoredAt, attributesArr, endPoint);
+                    if (tmp) results.push(tmp);
                 }
             });
         }
@@ -137,6 +162,7 @@ class HtmlParser {
     static parse(url,
                  scrapeOptions,
                  elementSelector,
+                 endPoint,
                  amount = 10) {
 
         return __awaiter(this, void 0, void 0, function* () {
@@ -151,7 +177,7 @@ class HtmlParser {
                             return;
                         let articleData = {};
                         let tmpObj = {};
-                        let basicData = ["title", "pubDate", "description"]; // Exp. If you remove the title, then the title is going to be on the extra information of each article.
+                        let basicData = ["title", "pubDate", "content"]; // Exp. If you remove the title, then the title is going to be on the extra information of each article.
                         let options = scrapeOptions;
                         // for each option. The options provided by instructions.
                         for (let item in options) {
@@ -164,7 +190,7 @@ class HtmlParser {
                                 }
                                 else {
                                     //@ts-ignore
-                                    articleData[options[item].name] = HtmlParser.findMultiple(options[item].find, cheerioLoad, element, item, options[item].multiple, true, options[item].attributes);
+                                    articleData[options[item].name] = HtmlParser.findMultiple(options[item].find, cheerioLoad, element, item, options[item].multiple, true, options[item].attributes, endPoint);
                                 }
                             }
                             else {
@@ -192,7 +218,6 @@ class HtmlParser {
                         parsedArticles.push(tmpObj);
                     });
                 });
-           // console.log(parsedArticles)
             return parsedArticles;
         });
     }
