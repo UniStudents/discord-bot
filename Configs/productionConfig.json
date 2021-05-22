@@ -39,5 +39,8 @@
     "betaAccessRoles": ["824780897688879134","824781683911163985","826182753334591558"],
     "betaTestersMax": 100,
     "maxBetaApplications": 10
+  },
+  "parsers_settings": {
+    "channelId": "845622457653133322"
   }
 }

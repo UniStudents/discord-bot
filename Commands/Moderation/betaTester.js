@@ -26,6 +26,7 @@ module.exports = {
             if(!testers[betaTester.id] || !testerAnswers[betaTester.id]) return error.send(bot, message.channel, `User is not part of UniTesters!`)
             let testerInfoEmbed = new discord.MessageEmbed()
                 .setColor(color)
+                .setAuthor(`${betaTester.user.tag}`,betaTester.user.displayAvatarURL())
                 .setDescription("UniTester Information")
                 .setTimestamp()
                 .setFooter(footerText.replace("%version%", version), footerIcon)
