@@ -12,6 +12,10 @@ const htmlParser = require('../Utils/Parsers/htmlParser')
 
 const emojis = require('../Configs/emojis.json')
 
+//Saffron instance
+const saffron = require("@poiw/saffron")
+
+
 
 module.exports = {
     name: "message",
@@ -42,6 +46,7 @@ module.exports = {
 
 async function parseMiddleware(message,bot){
     if(!message.author.bot && message.attachments.first() && message.attachments.first().name.endsWith(".json") && message.channel.id === config.parsers_settings.channelId){
+
         let load = bot.emojis.resolve(emojis["loading_dark"])
         let embed = new discord.MessageEmbed()
             .setColor(color)
@@ -59,15 +64,21 @@ async function parseMiddleware(message,bot){
             await error.send(bot,message.channel,"Malformed JSON file")
             return awaitEmbed.delete()
         }
-        if(!file || !file.url) return awaitEmbed.delete()
+        if(!file || (!file.urls && !file.url)) return awaitEmbed.delete()
         let parsed;
         if(file.type && file.type.toLowerCase() === "rss"){
-            parsed = await rssParser.default.rssParser(file.url).catch(e=>{
+            parsed = await saffron.parse(file)
+/*            parsed = await rssParser.default.rssParser(file.url).catch(e=>{
                 error.send(bot,message.channel,`RSS parser Error Info: ${e} `)
-            })
+            })*/
         }else if(file.type && file.type.toLowerCase() === "html"){
-            if(file && file.url && file.scrape && file.container && file.endPoint) {
-                parsed = await htmlParser.default.parse(file.url, file.scrape, file.container , file.endPoint)
+            if(file && file.url && file.scrape && file.scrape.container && file.scrape.endPoint) {
+                parsed = await saffron.parse(file)
+               // parsed = await htmlParser.default.parse(file.url, file.scrape, file.container , file.endPoint)
+            }
+        }else if(file.type && file.type.toLowerCase() === "wordpress"){
+            if(file && file.url && file.name) {
+                parsed = await saffron.parse(file)
             }
         }
         if(!parsed) {

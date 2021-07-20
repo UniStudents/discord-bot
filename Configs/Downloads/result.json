@@ -1,102 +1,273 @@
 [
     {
-        "title": "Ανακοίνωση προκήρυξης δύο θέσεων μελών ΔΕΠ",
-        "pubDate": "Τρίτη, 18 Μαϊος 2021 14:11",
-        "content": "",
+        "id": "art_50q4oeutvhgnjsux9emgj95vygju55tkb4716r2t129903",
+        "timestamp": 1626776939282,
+        "title": "Ενημέρωση αποφοίτων για παραλαβή πτυχίων",
+        "source": {
+            "id": "src_4d38da7a54a2f9da8f4b2c8643bae323f4c3c165f11577b"
+        },
+        "pubDate": "2021-07-13T20:49:16.000Z",
+        "content": "Αρχείο ανακοίνωσηςΛήψη",
         "extras": {
-            "links": {
-                "attribute": "unipi.gr/unipi/el/ανακοινώσεις/item/download/6074_da4ae4558c674bd0aac3d83aeb009a02.html",
-                "value": "Ανακοίνωση"
-            }
-        }
+            "categories": [
+                {
+                    "id": 3,
+                    "description": "Όλες οι ανακοινώσεις και οι επερχόμενες εκδηλώσεις του Τμήματος.",
+                    "name": "Ανακοινώσεις και Εκδηλώσεις",
+                    "links": [
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories/3",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/taxonomies/category",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/posts?categories=3"
+                    ]
+                }
+            ]
+        },
+        "hash": "7c953e756375953c98fba984d87f7526ba16db0f38f60554c537bbda79990bbb"
     },
     {
-        "title": "Προκήρυξη Εκλογών για την Ανάδειξη Κοσμήτορα της Σχολής Ναυτιλίας και Βιομηχανίας",
-        "pubDate": "Δευτέρα, 17 Μαϊος 2021 11:04",
-        "content": "",
+        "id": "art_e6e1ddohlmiolw3ssdvjgvtowrsktlg3h0nfn0w6509073",
+        "timestamp": 1626776939283,
+        "title": "Εξ αποστάσεως αξιολόγηση με χρήση ψηφιακών μέσων – Οδηγίες προς τους προπτυχιακούς φοιτητές και φοιτήτριες του Τμήματος για τη διεξαγωγή προφορικών και γραπτών εξετάσεων εξ αποστάσεως περιόδου Σεπτεμβρίου 2021 (αφορά όλα τα μαθήματα του Π.Π.Σ. είτε έχουν δηλωθεί ότι θα εξεταστούν εξ αποστάσεως είτε δια ζώσης)",
+        "source": {
+            "id": "src_4d38da7a54a2f9da8f4b2c8643bae323f4c3c165f11577b"
+        },
+        "pubDate": "2021-07-13T11:58:24.000Z",
+        "content": "Δήλωση των προπτυχιακών φοιτητών και φοιτητριών για συμμετοχή στη διαδικασία εξ αποστάσεως αξιολόγησης με χρήση ψηφιακών μέσων Σεπτεμβρίου 2021 (οι δηλώσεις θα πρέπει να γίνουν για όλα τα μαθήματα του Π.Π.Σ. &#8211; ακόμη και για τα μαθήματα που έχουν δηλωθεί ότι θα εξεταστούν δια ζώσης &#8211; ): Δηλώσεις έως 22/08/2021, 23:50.Περισσότερες πληροφορίες, αλλά και οδηγίες θα βρείτε στο συνημμένο αρχείο της συνημμένης ανακοίνωσης (Επιστολή Προέδρου Τμήματος).Συνημμένο Έντυπο (Νέα Επιστολή Προέδρου Τμήματος):Αρχείο ΑνακοίνωσηςΛήψη",
         "extras": {
-            "links": {
-                "attribute": "unipi.gr/unipi/el/ανακοινώσεις/item/download/6068_bbb317b70684d6a6babebfca7b0a2dff.html",
-                "value": "ΠΡΟΚΗΡΥΞΗ_ΕΚΛΟΓΩΝ_ΚΟΣΜΗΤΟΡΑ_1.pdf"
-            }
-        }
+            "categories": [
+                {
+                    "id": 3,
+                    "description": "Όλες οι ανακοινώσεις και οι επερχόμενες εκδηλώσεις του Τμήματος.",
+                    "name": "Ανακοινώσεις και Εκδηλώσεις",
+                    "links": [
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories/3",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/taxonomies/category",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/posts?categories=3"
+                    ]
+                },
+                {
+                    "id": 320,
+                    "description": "",
+                    "name": "Ειδοποιήσεις",
+                    "links": [
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories/320",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/taxonomies/category",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/posts?categories=320"
+                    ]
+                }
+            ]
+        },
+        "hash": "6d1f596eed6685d3cefbcda9dd2c76f3a1feafcd54c50583036e0f98650e6688"
     },
     {
-        "title": "Προκήρυξη Εκλογών για την Ανάδειξη Προέδρου και Αναπληρωτή Προέδρου του Τμήματος Βιομηχανικής Διοίκησης και Τεχνολογίας της Σχολής Ναυτιλίας και Βιομηχανίας",
-        "pubDate": "Δευτέρα, 17 Μαϊος 2021 10:59",
-        "content": "",
+        "id": "art_6k5dzzv2f758p12zlvvf691vg5yaa85rhy74hy3f131985",
+        "timestamp": 1626776939283,
+        "title": "Ανακοίνωση για κατατακτήριες εξετάσεις Ακαδ. Έτους 2021-22",
+        "source": {
+            "id": "src_4d38da7a54a2f9da8f4b2c8643bae323f4c3c165f11577b"
+        },
+        "pubDate": "2021-07-08T21:10:54.000Z",
+        "content": "Αρχείο ΑνακοίνωσηςΛήψηΑίτησηΛήψη",
         "extras": {
-            "links": {
-                "attribute": "unipi.gr/unipi/el/ανακοινώσεις/item/download/6066_78a4ca4e2df6d9b606937fb17f64a46c.html",
-                "value": "ΠΡΟΚΗΡΥΞΗ_ΕΚΛΟΓΩΝ_ΠΡΟΕΔΡΟΥ_ΑΝ._ΠΡΟΕΔΡΟΥ_ΤΜΗΜΑΤΟΣ_ΒΙΟΜ._ΔΙΟΙΚΗΣΗΣ_ΚΑΙ_ΤΕΧΝΟΛΟΓΙΑΣ_1.pdf"
-            }
-        }
+            "categories": [
+                {
+                    "id": 3,
+                    "description": "Όλες οι ανακοινώσεις και οι επερχόμενες εκδηλώσεις του Τμήματος.",
+                    "name": "Ανακοινώσεις και Εκδηλώσεις",
+                    "links": [
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories/3",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/taxonomies/category",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/posts?categories=3"
+                    ]
+                }
+            ]
+        },
+        "hash": "583dc2b050cf64ce55594d021ab773992a51faf7d1a1264bd406851a6f1f296c"
     },
     {
-        "title": "Διαδικτυακή Ημερίδα Ενημέρωσης για το πρόγραμμα Erasmus+ Κινητικότητα Φοιτητών για Σπουδές σε χώρες εντός ΕΕ",
-        "pubDate": "Παρασκευή, 14 Μαϊος 2021 12:16",
-        "content": "",
+        "id": "art_zyc3k00t4y8zf4thf17eotjf1aqbxfs8elahhi0l133704",
+        "timestamp": 1626776939284,
+        "title": "Πρόσκληση υποβολής αιτήσεων για το Π.Μ.Σ. «Κλιματική Κρίση και Τεχνολογίες Πληροφορικής και Επικοινωνιών (MSc in Climate Crisis and Information and Communication Technologies)» (Παράταση έως και 10 Σεπτεμβρίου 2021)",
+        "source": {
+            "id": "src_4d38da7a54a2f9da8f4b2c8643bae323f4c3c165f11577b"
+        },
+        "pubDate": "2021-07-01T07:34:07.000Z",
+        "content": "Συνημμένο Έντυπο:Αρχείο ΑνακοίνωσηςΛήψη",
         "extras": {
-            "links": {
-                "attribute": "unipi.gr/unipi/el/ανακοινώσεις/item/download/6062_09751fd1f4909e30a6c8707369ba172a.html",
-                "value": "Aνακοινωση_Eνημέρωσης_Φοιτητών_Erasmus_1.pdf"
-            }
-        }
+            "categories": [
+                {
+                    "id": 3,
+                    "description": "Όλες οι ανακοινώσεις και οι επερχόμενες εκδηλώσεις του Τμήματος.",
+                    "name": "Ανακοινώσεις και Εκδηλώσεις",
+                    "links": [
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories/3",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/taxonomies/category",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/posts?categories=3"
+                    ]
+                }
+            ]
+        },
+        "hash": "776351b2047b5c5deab401e1a51191ea5f16ceed6853f846c56bae481e805dc3"
     },
     {
-        "title": "ΨΗΦΙΣΜΑ ΚΑΤΣΑΝΕΒΑΣ ΘΕΟΔΩΡΟΣ",
-        "pubDate": "Κυριακή, 09 Μαϊος 2021 11:54",
-        "content": "",
+        "id": "art_zfpfu4nyigwxzv5zgj8xqpfy8dwsapjfaew1uktz476511",
+        "timestamp": 1626776939284,
+        "title": "Εγκύκλιος για χορήγηση στεγαστικού επιδόματος ακαδημαϊκού έτους 2020-2021",
+        "source": {
+            "id": "src_4d38da7a54a2f9da8f4b2c8643bae323f4c3c165f11577b"
+        },
+        "pubDate": "2021-07-01T00:49:10.000Z",
+        "content": "Αιτήσεις έως και την Παρασκευή 30 Ιουλίου 2021.https://www.unipi.gr/unipi/el/ppf-foithtikh-merimna/ppf-stegastiko-epidoma.html",
         "extras": {
-            "links": {
-                "attribute": "unipi.gr/unipi/el/ανακοινώσεις/item/download/6050_b4276853ed225d01addbfa89191b6bf9.html",
-                "value": "ΨΗΦΙΣΜΑ_ΚΑΤΣΑΝΕΒΑΣ_ΘΕΟΔΩΡΟΣ_9.5.2021.docx"
-            }
-        }
+            "categories": [
+                {
+                    "id": 3,
+                    "description": "Όλες οι ανακοινώσεις και οι επερχόμενες εκδηλώσεις του Τμήματος.",
+                    "name": "Ανακοινώσεις και Εκδηλώσεις",
+                    "links": [
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories/3",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/taxonomies/category",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/posts?categories=3"
+                    ]
+                }
+            ]
+        },
+        "hash": "a48636f0d1194dbe6f2019610ff682ed95518c552d9a27a8367224b77d6f7e99"
     },
     {
-        "title": "ΕΥΧΕΣ ΓΙΑ ΤΟ ΠΑΣΧΑ ΑΠΟ ΤΙΣ ΠΡΥΤΑΝΙΚΕΣ ΑΡΧΕΣ ΤΟΥ ΠΑΝΕΠΙΣΤΗΜΙΟΥ",
-        "pubDate": "Τετάρτη, 28 Απριλίου 2021 10:46",
-        "content": "",
+        "id": "art_3mi805pvmqowxo423i5b32aq16bhdiunfdkqxqtx126593",
+        "timestamp": 1626776939284,
+        "title": "Ανακοίνωση εγγραφής επιτυχόντων κατατακτηρίων εξετάσεων 2020-21",
+        "source": {
+            "id": "src_4d38da7a54a2f9da8f4b2c8643bae323f4c3c165f11577b"
+        },
+        "pubDate": "2021-06-23T12:13:59.000Z",
+        "content": "Αρχείο ΑνακοίνωσηςΛήψη",
         "extras": {
-            "links": {
-                "attribute": "unipi.gr/unipi/el/ανακοινώσεις/item/download/6045_b57ebb6d859a338a9e0145874840d87c.html",
-                "value": "pasxa_2021_unipi_final.jpg.pdf"
-            }
-        }
+            "categories": [
+                {
+                    "id": 3,
+                    "description": "Όλες οι ανακοινώσεις και οι επερχόμενες εκδηλώσεις του Τμήματος.",
+                    "name": "Ανακοινώσεις και Εκδηλώσεις",
+                    "links": [
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories/3",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/taxonomies/category",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/posts?categories=3"
+                    ]
+                }
+            ]
+        },
+        "hash": "02aa8039c1cbfe9395f4bc9ea8c8a353a4571d1821a692faa94e15b73e89f157"
     },
     {
-        "title": "Ανακοίνωση Συμβουλευτικού Κέντρου",
-        "pubDate": "Τρίτη, 20 Απριλίου 2021 14:10",
-        "content": "",
-        "extras": {}
-    },
-    {
-        "title": "Ανακοινώνεται η διαδικτυακή εκδήλωση της τελικής παρουσίασης των νικητών του διαγωνισμού καινοτομίας Blue Growth Piraeus",
-        "pubDate": "Δευτέρα, 19 Απριλίου 2021 11:43",
-        "content": "",
-        "extras": {}
-    },
-    {
-        "title": "ICT Career days 2021",
-        "pubDate": "Τρίτη, 13 Απριλίου 2021 12:19",
-        "content": "",
+        "id": "art_umoz2iwltr4qqtiznchywr2wpuiihdg0b8vzzg1v125648",
+        "timestamp": 1626776939285,
+        "title": "Πρόσκληση εκδήλωσης ενδιαφέροντος για αμοιβόμενη θέση ερευνητικής εργασίας με δυνατότητα εκπόνησης Διδακτορικής Διατριβής",
+        "source": {
+            "id": "src_4d38da7a54a2f9da8f4b2c8643bae323f4c3c165f11577b"
+        },
+        "pubDate": "2021-06-17T11:14:34.000Z",
+        "content": "Αρχείο ΑνακοίνωσηςΛήψη",
         "extras": {
-            "links": {
-                "attribute": "unipi.gr/unipi/el/ανακοινώσεις/item/download/6028_9d4ac65ce1c447d5508edfc441406de8.html",
-                "value": "ICT_Career_Days.pdf"
-            }
-        }
+            "categories": [
+                {
+                    "id": 63,
+                    "description": "Όλα οι ανακοινώσεις σχετικά με προοπτικές εργασίας.",
+                    "name": "Προοπτικές Εργασίας",
+                    "links": [
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories/63",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/taxonomies/category",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/posts?categories=63"
+                    ]
+                }
+            ]
+        },
+        "hash": "6f0b1a4fc3a437363b692ac7d12829e81edfcb7a9e4e376b7de2f93a9443c0b0"
     },
     {
-        "title": "Ανακοίνωση Υποτροφιών με το Προγραμμα DUO-KOREA 2021",
-        "pubDate": "Τετάρτη, 07 Απριλίου 2021 11:57",
-        "content": "",
+        "id": "art_51xly8qavc1jaju05oqo90f5mjrni62mr566ar7r776847",
+        "timestamp": 1626776939285,
+        "title": "Call for applications for the Online CubeSat Design Training Week 2021",
+        "source": {
+            "id": "src_4d38da7a54a2f9da8f4b2c8643bae323f4c3c165f11577b"
+        },
+        "pubDate": "2021-06-16T11:05:11.000Z",
+        "content": "Πληροφορίες σχετικά με το call μπορείτε να βρείτε εδώ.",
         "extras": {
-            "links": {
-                "attribute": "unipi.gr/unipi/el/ανακοινώσεις/item/download/6024_a31c3f9b7d612ebb3ac098ae72ade002.html",
-                "value": "ΠΡΟΓΡΑΜΜΑ_ΥΠΟΤΡΟΦΙΩΝ.pdf"
-            }
-        }
+            "categories": [
+                {
+                    "id": 3,
+                    "description": "Όλες οι ανακοινώσεις και οι επερχόμενες εκδηλώσεις του Τμήματος.",
+                    "name": "Ανακοινώσεις και Εκδηλώσεις",
+                    "links": [
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories/3",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/taxonomies/category",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/posts?categories=3"
+                    ]
+                }
+            ]
+        },
+        "hash": "3d427ddd8c982c9904b0d193877a7e1ea3a9b28459f22f54b66c839a374c4a5f"
+    },
+    {
+        "id": "art_rqga7ygddryyxc8i80w77r48tbipwl1lmqpg8s2s248538",
+        "timestamp": 1626776939285,
+        "title": "Πρακτικό καταμέτρησης ψήφων εκλογής Κοσμήτορα της Σχολής Τεχνολογιών Πληροφορικής και Επικοινωνιών του Πανεπιστημίου Πειραιώς",
+        "source": {
+            "id": "src_4d38da7a54a2f9da8f4b2c8643bae323f4c3c165f11577b"
+        },
+        "pubDate": "2021-06-15T14:44:17.000Z",
+        "content": "Αρχείο ΑνακοίνωσηςΛήψη",
+        "extras": {
+            "categories": [
+                {
+                    "id": 3,
+                    "description": "Όλες οι ανακοινώσεις και οι επερχόμενες εκδηλώσεις του Τμήματος.",
+                    "name": "Ανακοινώσεις και Εκδηλώσεις",
+                    "links": [
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories/3",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/taxonomies/category",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/posts?categories=3"
+                    ]
+                }
+            ]
+        },
+        "hash": "a53f5bf5599e05f04b9a7371a294a5f39bbbec26dd6ef04432173638fdf24abf"
+    },
+    {
+        "id": "art_8lepb5lnfu7qv63v7pj46roeryexa2ftv88lld6g152514",
+        "timestamp": 1626776939286,
+        "title": "Πρακτικό εκλογής Κοσμήτορα της Σχολής Τεχνολογιών Πληροφορικής και Επικοινωνιών του Πανεπιστημίου Πειραιώς",
+        "source": {
+            "id": "src_4d38da7a54a2f9da8f4b2c8643bae323f4c3c165f11577b"
+        },
+        "pubDate": "2021-06-15T14:42:01.000Z",
+        "content": "Αρχείο ΑνακοίνωσηςΛήψη",
+        "extras": {
+            "categories": [
+                {
+                    "id": 3,
+                    "description": "Όλες οι ανακοινώσεις και οι επερχόμενες εκδηλώσεις του Τμήματος.",
+                    "name": "Ανακοινώσεις και Εκδηλώσεις",
+                    "links": [
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories/3",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/categories",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/taxonomies/category",
+                        "https://www.ds.unipi.gr/wp-json/wp/v2/posts?categories=3"
+                    ]
+                }
+            ]
+        },
+        "hash": "52f5b6c3bedfc22b3cc4b3f26b19de7b13ebd9d8db264f9ec502212e8f15ef81"
     }
 ]
