@@ -7,8 +7,6 @@ const path = require('path')
 const db = require('quick.db');
 const request = require(`request`);
 const fs = require(`fs`);
-const rssParser = require('../Utils/Parsers/rss')
-const htmlParser = require('../Utils/Parsers/htmlParser')
 
 const emojis = require('../Configs/emojis.json')
 
@@ -57,9 +55,11 @@ async function parseMiddleware(message,bot){
         let fileName = await download(message.attachments.first().url)
         if(!fileName) return awaitEmbed.delete()
         let fileraw =  await fs.readFileSync(fileName)
+        console.log("test")
         let file;
         try{
             file = await JSON.parse(fileraw)
+            console.log(file)
         }catch (e){
             await error.send(bot,message.channel,"Malformed JSON file")
             return awaitEmbed.delete()
