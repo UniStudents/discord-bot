@@ -82,7 +82,6 @@ async function parseMiddleware(message,bot){
                 parsed = await saffron.parse(file).catch(e=> errorMessage=e)
             }
         }
-        console.log(errorMessage)
         if(!parsed || parsed instanceof Error || errorMessage instanceof Error) {
             await error.send(bot,message.channel,`Malformed JSON file or some provided data are wrong\n**More Info:**\n${errorMessage}`)
             return awaitEmbed.delete()
