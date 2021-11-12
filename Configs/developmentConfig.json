@@ -40,6 +40,11 @@
     "betaTestersMax": 100,
     "maxBetaApplications": 10
   },
+  "developers_contributors_settings": {
+    "contributorsChannelId": "908469435235450881",
+    "contributorRoleId": "908468762083201024",
+    "developerRoleId": "908467160085594163"
+  },
   "parsers_settings": {
     "channelId": "826562614456614914"
   }

@@ -88,6 +88,9 @@ module.exports = class Ticket {
         },{
             id: config.ticket_settings.everyoneRoleId,
             deny: ['VIEW_CHANNEL','SEND_MESSAGES','ATTACH_FILES','READ_MESSAGE_HISTORY']
+        },{
+            id: config.developers_contributors_settings.developerRoleId,
+            allow: ['VIEW_CHANNEL','READ_MESSAGE_HISTORY']
         }]
         //Merge Arrays
         rolesToOverwritePermsAllow = extraPerms.concat(rolesToOverwritePermsAllow)
