@@ -16,7 +16,7 @@
   },
   "ticket_settings": {
     "ticketCategoryId": "827606788932239420",
-    "ticketAccessRoles": ["824780897688879134","824781683911163985","826182753334591558"],
+    "ticketAccessRoles": ["824780897688879134","824781683911163985","826182753334591558","908467160085594163"],
     "everyoneRoleId": "824026103471013978",
     "maxTickets": 50,
     "ticketsPerUser": 1
@@ -39,6 +39,10 @@
     "betaAccessRoles": ["824780897688879134","824781683911163985","826182753334591558"],
     "betaTestersMax": 100,
     "maxBetaApplications": 10
+  },
+  "contributors_settings": {
+    "contributorsChannelId": "908469435235450881",
+    "contributorRoleId": "908468762083201024"
   },
   "parsers_settings": {
     "channelId": "845622457653133322"
