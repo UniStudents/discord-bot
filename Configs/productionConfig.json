@@ -37,7 +37,7 @@
     "betaTesterGeneralChannelId": "824777499904049222",
     "betaTesterParentCategory": "828700395604934779",
     "betaAccessRoles": ["824780897688879134","824781683911163985","826182753334591558"],
-    "betaTestersMax": 100,
+    "betaTestersMax": 250,
     "maxBetaApplications": 10
   },
   "contributors_settings": {
