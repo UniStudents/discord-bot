@@ -12,7 +12,7 @@ module.exports.setup = async (bot) =>{
 
     let unipi = bot.emojis.resolve(emojis["unipi"])
     let betaTestChat = new discord.MessageEmbed()
-        .setTitle(`**UniStudent - Become a beta tester**`)
+        .setTitle(`**UniStudent - Become a UniTester**`)
         .setColor(color)
         .setDescription(`Για να αποκτήσεις το ρόλο του UniTester κάνε 🔧 σε αυτό το μήνυμα.\n\nΌλα τα υπόλοιπα άφησε τα πάνω μας. ${unipi}`)
         .setFooter(footerText.replace("%version%",version),message.author.displayAvatarURL())
