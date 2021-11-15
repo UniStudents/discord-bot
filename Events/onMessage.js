@@ -83,7 +83,7 @@ async function parseMiddleware(message,bot){
             }
         }
         if(!parsed || parsed instanceof Error || errorMessage instanceof Error) {
-            await error.send(bot,message.channel,`Malformed JSON file or some provided data are wrong\n**More Info:**\n${errorMessage}`)
+            await error.send(bot,message.channel,`Malformed JSON file or some provided data are wrong\n**More Info:**\n${errorMessage.message}`)
             return awaitEmbed.delete()
         }
         let resultPath = path.resolve(__dirname,`../Configs/Downloads/result.json`)
