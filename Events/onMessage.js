@@ -67,23 +67,10 @@ async function parseMiddleware(message,bot){
         }
         if(!file || (!file.urls && !file.url)) return awaitEmbed.delete()
         let parsed;
-        if(file.type && file.type.toLowerCase() === "rss"){
-            parsed = await saffron.parse(file).catch(e=> errorMessage=e)
-/*            parsed = await rssParser.default.rssParser(file.url).catch(e=>{
-                error.send(bot,message.channel,`RSS parser Error Info: ${e} `)
-            })*/
-        }else if(file.type && file.type.toLowerCase() === "html"){
-            if(file && file.url && file.scrape && file.scrape.container && file.scrape.endPoint) {
-                parsed = await saffron.parse(file).catch(e=> errorMessage=e)
-               // parsed = await htmlParser.default.parse(file.url, file.scrape, file.container , file.endPoint)
-            }
-        }else if(file.type && file.type.toLowerCase() === "wordpress"){
-            if(file && file.url && file.name) {
-                parsed = await saffron.parse(file).catch(e=> errorMessage=e)
-            }
-        }
+        parsed = await  saffron.parse(file).catch(e=> errorMessage=e)
         if(!parsed || parsed instanceof Error || errorMessage instanceof Error) {
             await error.send(bot,message.channel,`Malformed JSON file or some provided data are wrong\n**More Info:**\n${errorMessage.message}`)
+            console.log(errorMessage)
             return awaitEmbed.delete()
         }
         let resultPath = path.resolve(__dirname,`../Configs/Downloads/result.json`)
