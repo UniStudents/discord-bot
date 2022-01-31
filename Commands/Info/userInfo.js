@@ -29,7 +29,7 @@ module.exports = {
             .addField("**Username:**", `${member.user.tag}`, true)
             .addField("**Id:**", `\`${member.id}\``, true)
             .addField("**Nickname:**", member.displayName, true)
-            .addField("**Status:**", member.presence.status, true)
+            .addField("**Status:**", member.presence ? member.presence.status : "Unknown", true)
             .addField("**Is Bot:**", member.user.bot, true)
             .addField("**Game:**", member.presence.activities.length >=1 ? member.presence.activities[0] : "None", true)
             .addField("**Account Created At:**", `${datecreated.getDate()}/${datecreated.getMonth()+1}/${datecreated.getFullYear()}`, true)
