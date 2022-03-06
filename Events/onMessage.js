@@ -60,14 +60,18 @@ async function parseMiddleware(message,bot){
         let file;
         try{
             file = await JSON.parse(fileraw)
-            //console.log(file)
+            console.log(file)
         }catch (e){
             await error.send(bot,message.channel,`Malformed JSON file\n**More Info:**\n${e}`)
             return awaitEmbed.delete()
         }
         if(!file || (!file.urls && !file.url)) return awaitEmbed.delete()
         let parsed;
-        parsed = await  saffron.parse(file).catch(e=> errorMessage=e)
+        parsed = await  saffron.parse(file).catch(e=> {
+            console.log(e)
+            errorMessage=e
+        })
+
         if(!parsed || parsed instanceof Error || errorMessage instanceof Error) {
             await error.send(bot,message.channel,`Malformed JSON file or some provided data are wrong\n**More Info:**\n${errorMessage.message}`)
             console.log(errorMessage)
