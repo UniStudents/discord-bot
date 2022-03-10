@@ -107,7 +107,7 @@ module.exports = class Ticket {
         let supportMessage = new discord.MessageEmbed()
             .setColor(color)
             .setAuthor(`${this.author.tag}`,this.author.displayAvatarURL())
-            .setDescription(`Hello  ${this.author} 👋,\n\nΛάβαμε το αίτημά σου και πολύ σύντομα θα είμαστε μαζί σου.\n\nΠάρε τον χρόνο σου και περιέγραψε μας το πρόβλημα που αντιμετώπισες, παρέχοντας πληροφορίες όπως:\n• Tο Πανεπιστήμιο και το τμήμα σου\n• To μήνυμα λάθους που σου εμφανίζεται\n• Κάποιο στιγμιότυπο, αν πρόκειται για πρόβλημα εντός της εφαρμογής.\n\n\n\nΜπορείς οποιαδήποτε στιγμή να αντίδράσεις με ένα ${ticketDelete} για να κλήσεις την αναφορά.`)
+            .setDescription(`Hello  ${this.author} 👋,\n\nΛάβαμε το αίτημά σου και πολύ σύντομα θα είμαστε μαζί σου.\n\nΠάρε τον χρόνο σου και περιέγραψε μας το πρόβλημα που αντιμετώπισες, παρέχοντας πληροφορίες όπως:\n• Tο Πανεπιστήμιο και το τμήμα σου\n• To μήνυμα λάθους που σου εμφανίζεται\n• Κάποιο στιγμιότυπο, αν πρόκειται για πρόβλημα εντός της εφαρμογής.\n\nΜπορείς οποιαδήποτε στιγμή να αντίδράσεις με ένα ${ticketDelete} για να κλήσεις την αναφορά.`)
             .setTimestamp()
             .setFooter(footerText.replace("%version%",version))
         if(this.subject) supportMessage.addField("Your Subject", this.subject)
