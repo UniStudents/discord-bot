@@ -110,13 +110,14 @@ async function linkCheck(msg){
     let whitelisted_channels = config.linksCheckSettings.whiteListedChannels
     let whitelisted_links = config.linksCheckSettings.whiteListedLinks
     let sentence_links = msg.content.split(regex).filter(word=> regex.test(word))
+    let userPerm = db.has(`Permissions.${msg.author.id}`) ? db.get(`Permissions.${msg.author.id}`).perm : 1
     if(!config.linksCheckSettings.useGoogleWebRiskApi){
-        let userPerm = db.has(`Permissions.${msg.author.id}`) ? db.get(`Permissions.${msg.author.id}`).perm : 1
         if(!sentence_links.every(link => whitelisted_links.some(whiteLink => link.trim() === whiteLink.trim() || link.trim().includes(whiteLink.trim()) )) && !whitelisted_channels.some(id => id === msg.channel.id) && userPerm <= config.linksCheckSettings.bypassPerm){
             await msg.delete()
             return null
         }
     }else {
+        if(userPerm > config.linksCheckSettings.bypassPerm) return
         let isSafeArray = (await Promise.all(sentence_links.map(link => generalUtils.isLinkSafe(link)))).map(array => {
             let {threat} = array[0]
             return threat ? threat : null
