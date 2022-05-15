@@ -40,6 +40,11 @@
     "betaTestersMax": 250,
     "maxBetaApplications": 10
   },
+  "linksCheckSettings": {
+    "whiteListedLinks": ["https://cyberglitch.me/"],
+    "whiteListedChannels": ["975349855209803797"],
+    "bypassPerm": 3
+  },
   "contributors_settings": {
     "contributorsChannelId": "908469435235450881",
     "contributorRoleId": "908468762083201024"
