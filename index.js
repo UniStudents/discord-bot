@@ -1,5 +1,6 @@
 const discord = require('discord.js')
 const client = new discord.Client()
+const dotEnv = require("dotenv").config()
 const {prefix,devToken,token} = require('./Configs/botconfig.json')
 const commandHandler = require('./Managers/commandHandler')
 const eventHandler = require('./Managers/eventHandler')

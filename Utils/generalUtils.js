@@ -1,3 +1,6 @@
+const {WebRiskServiceClient} = require('@google-cloud/web-risk');
+const client = new WebRiskServiceClient();
+
 module.exports = {
     chunk_inefficient_sorted: (chunkSize,sortElement,objectArray)=>{
       objectArray =  objectArray.sort((a,b)=> {
@@ -21,5 +24,22 @@ module.exports = {
             })
         )
         return objectArray
+    },
+    isLinkSafe: async (link)=>{
+        return new Promise(async (resolve,reject) => {
+            console.log(link)
+            const request = {
+                uri: link,
+                threatTypes: ['MALWARE', 'SOCIAL_ENGINEERING', 'UNWANTED_SOFTWARE'],
+            };
+
+            // call the WebRisk searchUris API.
+            const threat = await client.searchUris(request);
+            if (threat) {
+                resolve(threat)
+            } else {
+                resolve(null)
+            }
+        })
     }
 }
