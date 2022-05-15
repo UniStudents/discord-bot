@@ -9,10 +9,8 @@ module.exports = {
     name: "messageUpdate",
     execute: async (bot) => {
         bot.on('messageUpdate', async (oldMessage, newMessage) => {
-            if(!oldMessage || !newMessage || oldMessage.author.bot || !oldMessage.content || !newMessage.content || !channel || oldMessage.content === newMessage.content) return
-
             let channel = newMessage.guild.channels.cache.get(logsChannelId);
-
+            if(!oldMessage || !newMessage || oldMessage.author.bot || !oldMessage.content || !newMessage.content || !channel || oldMessage.content === newMessage.content) return
             let fields = new Map();
             let description = `Message Edited in ${newMessage.channel}`;
             fields.set("Edited at","**Date: **"+getDatePreFormatted() + "\n **Time: **" + getTimePreFormatted());

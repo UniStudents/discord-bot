@@ -21,6 +21,7 @@ module.exports = {
         bot.on('message',async (msg) => {
             await parseMiddleware(msg,bot)
             msg = await linkCheck(msg).catch(e=>{ })
+            if(!msg) return
             let message = msg.content
             if(!message.startsWith(prefix)) return
             let args = message.slice(prefix.length).trim().split(' ')
