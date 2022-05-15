@@ -18,8 +18,9 @@ const saffron = require("@poiw/saffron")
 module.exports = {
     name: "message",
     execute: async(bot) => {
-        bot.on('message',(msg) => {
-            parseMiddleware(msg,bot)
+        bot.on('message',async (msg) => {
+            await parseMiddleware(msg,bot)
+            msg = await linkCheck(msg).catch(e=>{ })
             let message = msg.content
             if(!message.startsWith(prefix)) return
             let args = message.slice(prefix.length).trim().split(' ')
@@ -98,4 +99,19 @@ async function download(url){
                 resolve(fileName)
             });
     }))
+}
+
+async function linkCheck(msg){
+    if(!msg) return
+    var expression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+    var regex = new RegExp(expression);
+    let whitelisted_channels = config.linksCheckSettings.whiteListedChannels
+    let whitelisted_links = config.linksCheckSettings.whiteListedLinks
+    let sentence_links = msg.content.split(regex).filter(word=> regex.test(word))
+    let userPerm = db.has(`Permissions.${msg.author.id}`) ? db.get(`Permissions.${msg.author.id}`).perm : 1
+    if(!sentence_links.every(link => whitelisted_links.some(whiteLink => link.trim() === whiteLink.trim())) && !whitelisted_channels.some(id => id === msg.channel.id) && userPerm < config.linksCheckSettings.bypassPerm ){
+        await msg.delete(200)
+        return null
+    }
+    return msg
 }
