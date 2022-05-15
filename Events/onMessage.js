@@ -104,7 +104,7 @@ async function download(url){
 async function linkCheck(msg){
     if(!msg) return
     let logsChannel = msg.guild.channels.cache.get(config.logsChannelId);
-    if(msg.author.bot) return
+    if(msg.author.bot) return msg
     var expression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
     var regex = new RegExp(expression);
     let whitelisted_channels = config.linksCheckSettings.whiteListedChannels
@@ -117,7 +117,7 @@ async function linkCheck(msg){
             return null
         }
     }else {
-        if(userPerm > config.linksCheckSettings.bypassPerm) return
+        if(userPerm > config.linksCheckSettings.bypassPerm) return msg
         let isSafeArray = (await Promise.all(sentence_links.map(link => generalUtils.isLinkSafe(link)))).map(array => {
             let {threat} = array[0]
             return threat ? threat : null
@@ -138,7 +138,7 @@ async function linkCheck(msg){
                 .addField("Message By", `${msg.author}`)
                 .setTimestamp();
             await logsChannel.send(threatLink)
-
+            return null
         }
     }
     return msg
