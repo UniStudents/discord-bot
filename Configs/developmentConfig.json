@@ -49,7 +49,8 @@
     "whiteListedChannels": ["935839353803005983"],
     "whiteListedCategories": ["935839353803005983"],
     "useGoogleWebRiskApi": true,
-    "bypassPerm": 3
+    "bypassPerm": 3,
+    "channelId": "827945258331013141"
   },
   "parsers_settings": {
     "channelId": "949300728990679080"
