@@ -44,6 +44,13 @@
     "contributorsChannelId": "908469435235450881",
     "contributorRoleId": "908468762083201024"
   },
+  "linksCheckSettings": {
+    "whiteListedLinks": ["https://cyberglitch.me/","https://google.com/","https://github.com/"],
+    "whiteListedChannels": ["935839353803005983"],
+    "whiteListedCategories": ["935839353803005983"],
+    "useGoogleWebRiskApi": true,
+    "bypassPerm": 3
+  },
   "parsers_settings": {
     "channelId": "949300728990679080"
   }

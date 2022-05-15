@@ -72,6 +72,7 @@ typings/
 .env
 .env.test
 Configs/botconfig.json
+Configs/GoogleApiCreds.json
 .idea
 
 # parcel-bundler cache (https://parceljs.org/)
@@ -109,3 +110,4 @@ json.sqlite
 .tern-port
 json.sqlite
 *.sqlite
+Configs/GoogleApiCreds.json
