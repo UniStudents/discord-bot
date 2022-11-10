@@ -23,6 +23,7 @@ module.exports = {
             msg = await linkCheck(msg).catch(e=>{ })
             if(!msg) return
             let message = msg.content
+            if(!message) return
             if(!message.startsWith(prefix)) return
             let args = message.slice(prefix.length).trim().split(' ')
             let cmdName = args.shift().toLowerCase()

@@ -14,11 +14,9 @@ module.exports = {
     usage:`${prefix}ouf`,
     permission: 8,
     execute: async (bot,message,args) => {
-        let messageToReact = message.channel.messages.fetch({ limit: 1 }).then(messages => {
-            console.log(messages)
+        let messageToReact = message.channel.messages.fetch({ limit: 10 }).then(messages => {
             if(!messages) return
-            let lastMessage = messages.first();
-            console.log(lastMessage.content)
+            let lastMessage = messages.filter(message=> !message.content.startsWith("!")).first();
 
             if (!lastMessage.author.bot) {
                 lastMessage.react("🇴")
