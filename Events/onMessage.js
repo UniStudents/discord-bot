@@ -18,7 +18,8 @@ module.exports = {
     name: "message",
     execute: async(bot) => {
         bot.on('message',async (msg) => {
-            parseMiddleware(msg,bot)
+            if(msg.author.bot) return
+            await parseMiddleware(msg,bot)
             msg = await linkCheck(msg).catch(e=>{ })
             if(!msg) return
             let message = msg.content
