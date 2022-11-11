@@ -11,7 +11,6 @@ const emojis = require('../Configs/emojis.json')
 
 //Saffron instance
 const saffron = require("@poiw/saffron")
-const {is} = require("cheerio/lib/api/traversing");
 
 
 
