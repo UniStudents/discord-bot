@@ -10,7 +10,7 @@ const generalUtils = require("../Utils/generalUtils")
 const emojis = require('../Configs/emojis.json')
 
 //Saffron instance
-const saffron = require("@poiw/saffron")
+const Saffron = require("@poiw/saffron").default
 
 
 
@@ -62,14 +62,14 @@ async function parseMiddleware(message,bot){
         let file;
         try{
             file = await JSON.parse(fileraw)
-            console.log(file)
+           // console.log(file)
         }catch (e){
             await error.send(bot,message.channel,`Malformed JSON file\n**More Info:**\n${e}`)
             return awaitEmbed.delete()
         }
         if(!file || (!file.urls && !file.url)) return awaitEmbed.delete()
         let parsed;
-        parsed = await  saffron.parse(file).catch(e=> {
+        parsed = await  Saffron.parse(file).catch(e=> {
             console.log(e)
             errorMessage=e
         })
