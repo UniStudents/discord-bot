@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/UniStudents/unistudents-bot#readme",
   "dependencies": {
-    "@google-cloud/web-risk": "^2.2.0",
+    "@google-cloud/web-risk": "^3.0.0",
     "@poiw/saffron": "3.5.0",
     "axios": "^0.21.4",
     "cheerio": "^1.0.0-rc.9",
